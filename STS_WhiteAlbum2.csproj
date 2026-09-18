@@ -1,0 +1,55 @@
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+    <Import Project=".\local.props" Condition="Exists('.\local.props')" />
+    <Import Project=".\Sts2PathDiscovery.props" Condition="Exists('.\Sts2PathDiscovery.props')" />
+    <Target Name="EnsureLocalProps" BeforeTargets="PrepareForBuild" Condition="!Exists('.\local.props')">
+        <Error Text="Missing '.\local.props'." />
+    </Target>
+
+    <PropertyGroup>
+        <RootNamespace>STS_WhiteAlbum2</RootNamespace>
+        <AssemblyName>STS_WhiteAlbum2</AssemblyName>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>true</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <NoWarn>CS0436</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <ModOutputDir>$(Sts2Dir)\mods\STS_WhiteAlbum2\</ModOutputDir>
+        <ModOutputDir Condition="'$(IsOSX)' == 'true'">$(Sts2Dir)\MacOS\mods\STS_WhiteAlbum2\</ModOutputDir>
+        <ModPckPath>$(ModOutputDir)STS_WhiteAlbum2.pck</ModPckPath>
+        <RunPckExport Condition="'$(RunPckExport)' == ''">true</RunPckExport>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="GodotSharp">
+            <HintPath>$(Sts2DataDir)\GodotSharp.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="sts2">
+            <HintPath>$(Sts2DataDir)\sts2.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <PackageReference Include="STS2.RitsuLib" Version="0.5.18" />
+    </ItemGroup>
+
+    <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
+        <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high" />
+        <MakeDir Directories="$(ModOutputDir)" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModOutputDir)" />
+        <Copy SourceFiles="$(MSBuildProjectDirectory)\STS_WhiteAlbum2.json" DestinationFolder="$(ModOutputDir)" />
+    </Target>
+
+    <ItemGroup>
+        <Compile Remove=".godot\**" />
+        <None Remove=".godot\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="STS_WhiteAlbum2.json" />
+    </ItemGroup>
+</Project>

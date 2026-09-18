@@ -1,0 +1,31 @@
+{
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_ONE.title": "空白遗物 · 1",
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_ONE.description": "空白初始遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_ONE.flavor": "占位。",
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_TWO.title": "空白遗物 · 2",
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_TWO.description": "空白遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_TWO.flavor": "占位。",
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_THREE.title": "空白遗物 · 3",
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_THREE.description": "空白遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ALBUM_RELIC_THREE.flavor": "占位。",
+"STS_WHITE_ALBUM2_RELIC_ACT_ONE_RELIC_ALPHA.title": "空白先古遗物 · 壹",
+  "STS_WHITE_ALBUM2_RELIC_ACT_ONE_RELIC_ALPHA.description": "占位用的先古遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ACT_ONE_RELIC_BETA.title": "空白先古遗物 · 贰",
+  "STS_WHITE_ALBUM2_RELIC_ACT_ONE_RELIC_BETA.description": "占位用的先古遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ACT_ONE_RELIC_GAMMA.title": "空白先古遗物 · 叁",
+  "STS_WHITE_ALBUM2_RELIC_ACT_ONE_RELIC_GAMMA.description": "占位用的先古遗物，没有任何效果。",
+
+  "STS_WHITE_ALBUM2_RELIC_ACT_TWO_RELIC_ALPHA.title": "空白先古遗物 · 肆",
+  "STS_WHITE_ALBUM2_RELIC_ACT_TWO_RELIC_ALPHA.description": "占位用的先古遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ACT_TWO_RELIC_BETA.title": "空白先古遗物 · 伍",
+  "STS_WHITE_ALBUM2_RELIC_ACT_TWO_RELIC_BETA.description": "占位用的先古遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ACT_TWO_RELIC_GAMMA.title": "空白先古遗物 · 陆",
+  "STS_WHITE_ALBUM2_RELIC_ACT_TWO_RELIC_GAMMA.description": "占位用的先古遗物，没有任何效果。",
+
+  "STS_WHITE_ALBUM2_RELIC_ACT_THREE_RELIC_ALPHA.title": "空白先古遗物 · 柒",
+  "STS_WHITE_ALBUM2_RELIC_ACT_THREE_RELIC_ALPHA.description": "占位用的先古遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ACT_THREE_RELIC_BETA.title": "空白先古遗物 · 捌",
+  "STS_WHITE_ALBUM2_RELIC_ACT_THREE_RELIC_BETA.description": "占位用的先古遗物，没有任何效果。",
+  "STS_WHITE_ALBUM2_RELIC_ACT_THREE_RELIC_GAMMA.title": "空白先古遗物 · 玖",
+  "STS_WHITE_ALBUM2_RELIC_ACT_THREE_RELIC_GAMMA.description": "占位用的先古遗物，没有任何效果。"
+}
