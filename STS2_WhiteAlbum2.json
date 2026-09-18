@@ -1,0 +1,18 @@
+{
+  "id": "STS2_WhiteAlbum2",
+  "pck_name": "STS2_WhiteAlbum2",
+  "name": "STS2_WHITE_ALBUM2",
+  "author": "b4c",
+  "description": "人物玩法合集：两个空白角色（只借本体静默猎手的美术，卡牌/遗物/药水都是本 mod 的最小占位内容，卡牌就叫 1~5）+ together（本地多控：两人共控一个角色、共享血量与卡组、各自手牌与能量、共生体）+ 先古替换（三幕先古之民与 boss 换成占位内容，地图图标统一用捏奥的）+ PVP 决斗（问号房进对决事件、两人轮流行动、谁先倒下谁输）。",
+  "version": "0.4.0",
+  "has_pck": true,
+  "has_dll": true,
+  "affects_gameplay": true,
+  "min_game_version": "0.111.0",
+  "dependencies": [
+    {
+      "id": "STS2-RitsuLib",
+      "min_version": "0.5.18"
+    }
+  ]
+}

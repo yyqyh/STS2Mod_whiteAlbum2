@@ -5,8 +5,9 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 
 using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Ancients;
 
-namespace STS2_WhiteAlbum2.Core.Ancients;
+namespace STS2_WhiteAlbum2.Core.Patches;
 
 /// <summary>
 /// 强制替换的"写房间"那一步：把每一幕的 <c>RoomSet.Ancient</c> / <c>Boss</c> / <c>SecondBoss</c> 换成我们的。

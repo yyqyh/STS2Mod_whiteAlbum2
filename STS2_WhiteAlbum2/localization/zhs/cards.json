@@ -1,0 +1,23 @@
+{
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_ONE.title": "雪菜·打击",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_ONE.description": "造成 {Damage:diff()} 点伤害。",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_TWO.title": "雪菜·防御",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_TWO.description": "获得 {Block:diff()} 点格挡。",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_THREE.title": "雪菜·斩击",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_THREE.description": "造成 {Damage:diff()} 点伤害。",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_FOUR.title": "雪菜·闪避",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_FOUR.description": "获得 {Block:diff()} 点格挡。",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_FIVE.title": "雪菜·墨刃",
+  "STS2_WHITE_ALBUM2_CARD_SETSUNA_CARD_FIVE.description": "造成 {Damage:diff()} 点伤害。",
+
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_ONE.title": "冬马·打击",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_ONE.description": "造成 {Damage:diff()} 点伤害。",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_TWO.title": "冬马·防御",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_TWO.description": "获得 {Block:diff()} 点格挡。",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_THREE.title": "冬马·斩击",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_THREE.description": "造成 {Damage:diff()} 点伤害。",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_FOUR.title": "冬马·闪避",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_FOUR.description": "获得 {Block:diff()} 点格挡。",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_FIVE.title": "冬马·墨刃",
+  "STS2_WHITE_ALBUM2_CARD_TOUMA_CARD_FIVE.description": "造成 {Damage:diff()} 点伤害。"
+}

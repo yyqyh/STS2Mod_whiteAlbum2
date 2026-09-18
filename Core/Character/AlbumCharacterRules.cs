@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 using MegaCrit.Sts2.Core.Runs;
 
-using STS2_WhiteAlbum2.Core.Together.Config;
+using STS2_WhiteAlbum2.Core.Settings;
 
 namespace STS2_WhiteAlbum2.Core.Character;
 

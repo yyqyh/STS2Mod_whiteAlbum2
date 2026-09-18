@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
+using STS2_WhiteAlbum2.Core.Patches.Together;
 
 namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 

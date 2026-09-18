@@ -6,24 +6,11 @@ using STS2RitsuLib;
 using STS2RitsuLib.Settings;
 using STS2RitsuLib.Utils.Persistence;
 
-using STS2_WhiteAlbum2.Core.Pvp;
-using STS2_WhiteAlbum2.Core.Together.Config;
 using STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 namespace STS2_WhiteAlbum2.Core.Settings;
 
-/// <summary>
-/// 本 mod 的统一设置页：debug 总开关 / together / pvp 三节。
-/// </summary>
-/// <remarks>
-/// <para>
-/// 这里是独立注册的一张页，不再往 together 原来的页面构建器尾部追加 PVP 控件。
-/// 旧页面文件保留只作历史参考，<see cref="Register" /> 不再调用它。
-/// </para>
-/// <para>
-/// 文案一律用 <c>ModSettingsText.Literal</c>，不依赖本地化表。
-/// </para>
-/// </remarks>
+/// <remarks>独立注册一张页，不再往别人的页面构建器尾部追加控件。文案用 <c>ModSettingsText.Literal</c>，不依赖本地化表。</remarks>
 internal static class AlbumSettingsPage
 {
     private static bool _registered;
@@ -37,23 +24,23 @@ internal static class AlbumSettingsPage
 
         _registered = true;
 
-        var debugBinding = new ModSettingsValueBinding<PvpSettings, bool>(
+        var debugBinding = new ModSettingsValueBinding<WhiteAlbumSetting, bool>(
             Const.ModId,
-            PvpSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             settings => settings.Debug,
             (settings, value) => settings.Debug = value);
 
-        var singleplayerCharacterBinding = new ModSettingsValueBinding<AlbumGeneralSettings, bool>(
+        var singleplayerCharacterBinding = new ModSettingsValueBinding<WhiteAlbumSetting, bool>(
             Const.ModId,
-            AlbumGeneralSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             settings => settings.CharactersVisibleInSingleplayer,
             (settings, value) => settings.CharactersVisibleInSingleplayer = value);
 
-        var symbiosisBinding = new ModSettingsValueBinding<TogetherSettings, bool>(
+        var symbiosisBinding = new ModSettingsValueBinding<WhiteAlbumSetting, bool>(
             Const.ModId,
-            TogetherSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             _ => TogetherSettingsSync.EffectiveSymbiosisEnabled,
             (settings, value) =>
@@ -68,9 +55,9 @@ internal static class AlbumSettingsPage
                 TogetherSettingsSync.PublishHostSettings("settings_changed");
             });
 
-        var mergeBinding = new ModSettingsValueBinding<TogetherSettings, bool>(
+        var mergeBinding = new ModSettingsValueBinding<WhiteAlbumSetting, bool>(
             Const.ModId,
-            TogetherSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             _ => TogetherSettingsSync.EffectiveMergeStarterDecks,
             (settings, value) =>
@@ -79,9 +66,9 @@ internal static class AlbumSettingsPage
                 TogetherSettingsSync.PublishHostSettings("settings_changed");
             });
 
-        var hpBinding = new ModSettingsValueBinding<TogetherSettings, string>(
+        var hpBinding = new ModSettingsValueBinding<WhiteAlbumSetting, string>(
             Const.ModId,
-            TogetherSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             _ => Math
                 .Clamp(TogetherSettingsSync.EffectiveHpBonusPercent, 0, 100)
@@ -96,9 +83,9 @@ internal static class AlbumSettingsPage
                 TogetherSettingsSync.PublishHostSettings("settings_changed");
             });
 
-        var shareGoldBinding = new ModSettingsValueBinding<TogetherSettings, bool>(
+        var shareGoldBinding = new ModSettingsValueBinding<WhiteAlbumSetting, bool>(
             Const.ModId,
-            TogetherSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             _ => TogetherSettingsSync.EffectiveShareGold,
             (settings, value) =>
@@ -107,30 +94,30 @@ internal static class AlbumSettingsPage
                 TogetherSettingsSync.PublishHostSettings("settings_changed");
             });
 
-        var pvpEnabledBinding = new ModSettingsValueBinding<PvpSettings, bool>(
+        var pvpEnabledBinding = new ModSettingsValueBinding<WhiteAlbumSetting, bool>(
             Const.ModId,
-            PvpSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             settings => settings.Enabled,
             (settings, value) => settings.Enabled = value);
 
-        var pvpEventBinding = new ModSettingsValueBinding<PvpSettings, bool>(
+        var pvpEventBinding = new ModSettingsValueBinding<WhiteAlbumSetting, bool>(
             Const.ModId,
-            PvpSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             settings => settings.EventEnabled,
             (settings, value) => settings.EventEnabled = value);
 
-        var pvpEventDebugBinding = new ModSettingsValueBinding<PvpSettings, bool>(
+        var pvpEventDebugBinding = new ModSettingsValueBinding<WhiteAlbumSetting, bool>(
             Const.ModId,
-            PvpSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             settings => settings.EventDebugFirstQuestion,
             (settings, value) => settings.EventDebugFirstQuestion = value);
 
-        var pvpRoundsBinding = new ModSettingsValueBinding<PvpSettings, string>(
+        var pvpRoundsBinding = new ModSettingsValueBinding<WhiteAlbumSetting, string>(
             Const.ModId,
-            PvpSettingsStore.DataKey,
+            WhiteAlbumSettingStore.DataKey,
             SaveScope.Global,
             settings => Math.Clamp(settings.MaxRounds, 1, 999).ToString(CultureInfo.InvariantCulture),
             (settings, value) =>
@@ -251,7 +238,7 @@ internal static class AlbumSettingsPage
                         ModSettingsText.Literal("调试：对决事件放在第一个问号房"),
                         pvpEventDebugBinding,
                         ModSettingsText.Dynamic(DescribePvpEventDebug),
-                        visibleWhen: () => PvpSettingsStore.Current.Debug)
+                        visibleWhen: () => WhiteAlbumSettingStore.Current.Debug)
                     .AddString(
                         "pvp_max_rounds",
                         ModSettingsText.Literal("回合上限（1~999）"),
@@ -283,7 +270,7 @@ internal static class AlbumSettingsPage
 
     private static string DescribeDebug()
     {
-        return PvpSettingsStore.Current.Debug
+        return WhiteAlbumSettingStore.Current.Debug
             ? "当前：开启 —— 调试选项会生效。"
             : "当前：关闭 —— 所有「调试：」选项都不生效。";
     }
@@ -297,21 +284,21 @@ internal static class AlbumSettingsPage
 
     private static string DescribePvpEnabled()
     {
-        return PvpSettingsStore.Current.Enabled
+        return WhiteAlbumSettingStore.Current.Enabled
             ? "当前：设置开启 —— 仅在本局正好 2 人且分别选了不同 mod 角色时才会真正启动决斗。"
             : "当前：关闭 —— 本 mod 不介入任何对局。";
     }
 
     private static string DescribePvpEvent()
     {
-        return PvpSettingsStore.Current.EventEnabled
+        return WhiteAlbumSettingStore.Current.EventEnabled
             ? "当前：生成 —— 决斗事件会出现在选定的位置。"
             : "当前：不生成 —— PVP 事件入口完全不出现。";
     }
 
     private static string DescribePvpEventDebug()
     {
-        return PvpSettingsStore.Current.EventDebugFirstQuestion
+        return WhiteAlbumSettingStore.Current.EventDebugFirstQuestion
             ? "当前：固定第一个问号房（需要上面的调试总开关也开着）。"
             : "当前：走正式流程 —— 三层最终 boss 打完后、本体要进结局事件那一刻生成。";
     }

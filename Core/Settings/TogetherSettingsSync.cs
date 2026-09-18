@@ -10,26 +10,11 @@ using STS2RitsuLib.Networking.Sidecar;
 
 using STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
-namespace STS2_WhiteAlbum2.Core.Together.Config;
+namespace STS2_WhiteAlbum2.Core.Settings;
 
-/// <summary>
-/// 联机时的"共享角色"设置同步：<b>以主机为准</b>。
-/// </summary>
-/// <remarks>
-/// <para>
-/// 为什么必须同步：配不配对是<b>每台机器各自算</b>的（<c>TogetherPair.Arm</c> 依据"本局有几名玩家选了那个角色"）。
-/// 要是两边设置不一样（主机选故障机器人、另一位还停在"关闭"），就会一台机器配对、另一台不配对 →
-/// 两台机器的牌堆/血量立刻分叉 → 校验和当场把人踢下线。所以设置只认主机的，客户端跟随。
-/// </para>
-/// <para>
-/// 机制照抄酒狐（<c>WineFoxRuntimeSettings</c> + <c>WineFoxMultiplayerSettingsSyncPatches</c>）：
-/// 用 RitsuLib 的 sidecar 配置同步发布/订阅一个 topic；主机在"开服 / 有对端就绪 / 改设置"时发布，
-/// 客户端缓存远端值并在连接开始时清掉旧缓存。判定"当前是不是客户端"用 <c>NetClientGameService</c>。
-/// </para>
-/// <para>
-/// 取不到远端值（单人局、还没连上、主机没发过）时一律用本地设置——单人局本来就该听自己的。
-/// </para>
-/// </remarks>
+/// <summary>联机时的设置同步：<b>以主机为准</b>，客户端跟随。</summary>
+/// <remarks>不这么做两边判定会分叉（一台配对、一台不配对），牌堆对不上就被校验和踢下线。
+/// 取不到远端值（单人局 / 还没连上 / 主机没发过）时一律用本地设置。</remarks>
 internal static class TogetherSettingsSync
 {
     private const string Topic = "together.symbiosis_enabled";
@@ -40,13 +25,7 @@ internal static class TogetherSettingsSync
 
     private static Snapshot? _remote;
 
-    /// <summary>
-    /// 本局实际生效的"共生体开关"。
-    /// </summary>
-    /// <remarks>
-    /// 客户端优先用主机发布过来的值；其余情况用本地设置。<b>所有读设置的地方都应该走这里</b>，
-    /// 不要直接读 <see cref="TogetherSettingsStore" />。
-    /// </remarks>
+    /// <summary>本局实际生效的"共生体开关"。所有读设置的地方都应该走这里。</summary>
     public static bool EffectiveSymbiosisEnabled
     {
         get
@@ -61,13 +40,11 @@ internal static class TogetherSettingsSync
                 }
             }
 
-            return TogetherSettingsStore.SymbiosisEnabled;
+            return WhiteAlbumSettingStore.SymbiosisEnabled;
         }
     }
 
-    /// <summary>
-    /// 本局实际生效的"开局合并双方初始卡组"开关（同样是客户端跟随主机）。
-    /// </summary>
+    /// <summary>本局实际生效的"开局合并双方初始卡组"。</summary>
     public static bool EffectiveMergeStarterDecks
     {
         get
@@ -82,13 +59,11 @@ internal static class TogetherSettingsSync
                 }
             }
 
-            return TogetherSettingsStore.MergeStarterDecks;
+            return WhiteAlbumSettingStore.MergeStarterDecks;
         }
     }
 
-    /// <summary>
-    /// 本局实际生效的"共生体血量上限提升百分比"（0~100，客户端跟随主机）。
-    /// </summary>
+    /// <summary>本局实际生效的"血量上限提升百分比"（0~100）。</summary>
     public static int EffectiveHpBonusPercent
     {
         get
@@ -103,13 +78,11 @@ internal static class TogetherSettingsSync
                 }
             }
 
-            return TogetherSettingsStore.HpBonusPercent;
+            return WhiteAlbumSettingStore.HpBonusPercent;
         }
     }
 
-    /// <summary>
-    /// 本局实际生效的"共生体人数上限"（2~4，客户端跟随主机）。
-    /// </summary>
+    /// <summary>本局实际生效的"共生体人数上限"（2~4）。</summary>
     public static int EffectiveGroupSize
     {
         get
@@ -124,11 +97,11 @@ internal static class TogetherSettingsSync
                 }
             }
 
-            return TogetherSettingsStore.GroupSize;
+            return WhiteAlbumSettingStore.GroupSize;
         }
     }
 
-    /// <summary>本局实际生效的"是否共享金币"（客户端跟随主机）。</summary>
+    /// <summary>本局实际生效的"是否共享金币"。</summary>
     public static bool EffectiveShareGold
     {
         get
@@ -143,7 +116,7 @@ internal static class TogetherSettingsSync
                 }
             }
 
-            return TogetherSettingsStore.ShareGold;
+            return WhiteAlbumSettingStore.ShareGold;
         }
     }
 
@@ -162,7 +135,7 @@ internal static class TogetherSettingsSync
         }
     }
 
-    /// <summary>主机把当前设置广播出去（设置界面改完、开服、有对端就绪时调用）。</summary>
+    /// <summary>主机把当前设置广播出去（开服 / 有对端就绪 / 改设置时调用）。</summary>
     public static void PublishHostSettings(string reason)
     {
         PublishHostSettings(RunManager.Instance?.NetService, reason);
@@ -188,11 +161,11 @@ internal static class TogetherSettingsSync
         }
         catch (Exception ex)
         {
-            Const.Logger.Warn($"[together] 广播共生体开关失败（{reason}）：{ex.Message}");
+            Const.Logger.Warn($"[together] 广播设置失败（{reason}）：{ex.Message}");
         }
     }
 
-    /// <summary>清掉缓存的远端设置（客户端开始连接 / 断开连接时调用）。</summary>
+    /// <summary>清掉缓存的远端设置（客户端连接 / 断开时调用）。</summary>
     public static void ClearRemote()
     {
         lock (Gate)
@@ -206,11 +179,11 @@ internal static class TogetherSettingsSync
         RitsuLibSidecarConfigSyncService.RegisterTopic<Snapshot, Snapshot>(
             Topic,
             new Snapshot(
-                TogetherSettingsStore.SymbiosisEnabled,
-                TogetherSettingsStore.MergeStarterDecks,
-                TogetherSettingsStore.HpBonusPercent,
-                TogetherSettingsStore.GroupSize,
-                TogetherSettingsStore.ShareGold),
+                WhiteAlbumSettingStore.SymbiosisEnabled,
+                WhiteAlbumSettingStore.MergeStarterDecks,
+                WhiteAlbumSettingStore.HpBonusPercent,
+                WhiteAlbumSettingStore.GroupSize,
+                WhiteAlbumSettingStore.ShareGold),
             (_, _) => false,
             (state, _) => state);
     }
@@ -219,7 +192,7 @@ internal static class TogetherSettingsSync
     {
         if (ev.Topic != Topic || RunManager.Instance?.NetService is not NetClientGameService)
         {
-            // 只有客户端要听主机的；主机（和单人局）永远用自己的设置。
+            // 只有客户端听主机的；主机和单人局永远用自己的设置。
             return;
         }
 
@@ -230,7 +203,7 @@ internal static class TogetherSettingsSync
         }
         catch (Exception ex)
         {
-            Const.Logger.Warn($"[together] 解析主机共生体开关失败：{ex.Message}");
+            Const.Logger.Warn($"[together] 解析主机设置失败：{ex.Message}");
             return;
         }
 
@@ -284,7 +257,7 @@ internal static class HostStartSteamSettingsSyncPatch
     }
 }
 
-/// <summary>有对端进入可广播状态时再补发一次（后进的人也能拿到）。</summary>
+/// <summary>有对端进入可广播状态时补发一次（后进的人也能拿到）。</summary>
 [HarmonyPatch(typeof(NetHostGameService), nameof(NetHostGameService.SetPeerReadyForBroadcasting))]
 internal static class HostPeerReadySettingsSyncPatch
 {
@@ -296,7 +269,7 @@ internal static class HostPeerReadySettingsSyncPatch
     }
 }
 
-/// <summary>客户端开始连接前，先把上一局缓存的主机设置清掉。</summary>
+/// <summary>客户端开始连接前，先清掉上一局缓存的主机设置。</summary>
 [HarmonyPatch(typeof(NetClientGameService), nameof(NetClientGameService.Initialize))]
 internal static class ClientInitializeSettingsResetPatch
 {

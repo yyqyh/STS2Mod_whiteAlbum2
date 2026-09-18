@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Runs;
 
 using STS2RitsuLib.Networking.Sidecar;
 
-using STS2_WhiteAlbum2.Core.Together.Config;
+using STS2_WhiteAlbum2.Core.Settings;
 
 namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 

@@ -14,6 +14,7 @@ using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Screens.Capstones;
 using MegaCrit.Sts2.Core.Nodes.Screens;
 using MegaCrit.Sts2.Core.Runs;
+using STS2_WhiteAlbum2.Core.Patches.Together;
 
 namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 

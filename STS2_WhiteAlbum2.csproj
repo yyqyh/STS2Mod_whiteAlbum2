@@ -1,0 +1,72 @@
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+    <Import Project=".\local.props" Condition="Exists('.\local.props')" />
+    <Import Project=".\Sts2PathDiscovery.props" Condition="Exists('.\Sts2PathDiscovery.props')" />
+    <Target Name="EnsureLocalProps" BeforeTargets="PrepareForBuild" Condition="!Exists('.\local.props')">
+        <Error Text="Missing '.\local.props'. Copy '.\local.props.template' to '.\local.props', then update 'Sts2Dir' \ 'GodotExe' for your local environment." />
+    </Target>
+
+    <PropertyGroup>
+        <RootNamespace>STS2_WhiteAlbum2</RootNamespace>
+        <AssemblyName>STS2_WhiteAlbum2</AssemblyName>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>true</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <NoWarn>CS0436</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GodotExportPreset>BasicExport</GodotExportPreset>
+        <ModOutputDir>$(Sts2Dir)\mods\$(MSBuildProjectName)\</ModOutputDir>
+        <ModOutputDir Condition="'$(IsOSX)' == 'true'">$(Sts2Dir)\MacOS\mods\$(MSBuildProjectName)\</ModOutputDir>
+        <ModPckPath>$(ModOutputDir)$(MSBuildProjectName).pck</ModPckPath>
+        <!--
+        <RunPckExport Condition="'$(RunPckExport)' == '' and '$(DesignTimeBuild)' != 'true'">true</RunPckExport>
+        -->
+        <RunPckExport Condition="'$(RunPckExport)' == ''">false</RunPckExport>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="GodotSharp">
+            <HintPath>$(Sts2DataDir)\GodotSharp.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="sts2">
+            <HintPath>$(Sts2DataDir)\sts2.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <PackageReference Include="STS2.RitsuLib" Version="0.5.18" />
+    </ItemGroup>
+
+    <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
+        <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high" />
+        <MakeDir Directories="$(ModOutputDir)" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModOutputDir)" />
+        <Copy SourceFiles="$(MSBuildProjectDirectory)\$(MSBuildProjectName).json" DestinationFolder="$(ModOutputDir)" />
+    </Target>
+
+    <Target Name="Export Mod PCK" AfterTargets="Build" Condition="'$(RunPckExport)' == 'true' and '$(STS2_SKIP_PCK_EXPORT)' != '1' and Exists('$(GodotExe)')">
+        <Message Text="Exporting mod PCK with Godot..." Importance="high" />
+        <MakeDir Directories="$(ModOutputDir)" />
+        <Exec Command="&quot;$(GodotExe)&quot; --headless --path &quot;$(MSBuildProjectDirectory)&quot; --export-pack &quot;$(GodotExportPreset)&quot; &quot;$(ModPckPath)&quot;" EnvironmentVariables="STS2_SKIP_PCK_EXPORT=1" />
+    </Target>
+
+    <Target Name="Warn Missing Godot" AfterTargets="Build" Condition="'$(RunPckExport)' == 'true' and '$(STS2_SKIP_PCK_EXPORT)' != '1' and !Exists('$(GodotExe)')">
+        <Warning Text="Godot executable not found at $(GodotExe). Skipped PCK export." />
+    </Target>
+
+    <ItemGroup>
+        <Compile Remove=".godot\**" />
+        <None Remove=".godot\**" />
+        <Content Remove=".godot\**" />
+        <EmbeddedResource Remove=".godot\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="$(MSBuildProjectName).json" />
+    </ItemGroup>
+</Project>

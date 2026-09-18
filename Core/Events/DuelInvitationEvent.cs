@@ -8,6 +8,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Settings;
 
 namespace STS2_WhiteAlbum2.Core.Pvp;
 
@@ -71,7 +72,7 @@ public sealed class DuelInvitationEvent : ModEventTemplate
 
     private Task BeginDuel()
     {
-        if (!DuelConfig.Enabled)
+        if (!WhiteAlbumSetting.DuelEnabled)
         {
             Log.Warn("[STS2_WhiteAlbum2] 决斗事件被触发，但本局不满足“两个不同 mod 角色”条件，忽略");
             SetEventFinished(PageDescription("BEGIN"));

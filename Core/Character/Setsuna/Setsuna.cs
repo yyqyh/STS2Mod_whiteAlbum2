@@ -35,14 +35,13 @@ public sealed class Setsuna : ModCharacterTemplate<SetsunaCardPool, SetsunaRelic
 
     public override CharacterGender Gender => CharacterGender.Feminine;
 
-    /// <summary>默认用本体静默猎手补全缺失的场景 / 音效资源。</summary>
-    public override string? PlaceholderCharacterId => Const.HunterSourceId;
 
     /// <summary>静态占位美术：选人立绘、顶栏图标、地图标记。</summary>
     public override CharacterAssetProfile AssetProfile => new(
         Ui: new CharacterUiAssetSet(
             IconTexturePath: AlbumCharacterArt.SetsunaTopIcon,
             IconOutlineTexturePath: AlbumCharacterArt.SetsunaTopIconOutline,
+            IconPath: AlbumCharacterArt.SetsunaTopIcon,
             CharacterSelectBgPath: AlbumCharacterArt.SetsunaSelectBgScene,
             CharacterSelectIconPath: AlbumCharacterArt.SetsunaSelectIcon,
             CharacterSelectLockedIconPath: AlbumCharacterArt.SetsunaSelectLockedIcon,
@@ -53,6 +52,10 @@ public sealed class Setsuna : ModCharacterTemplate<SetsunaCardPool, SetsunaRelic
             ArmPaperTexturePath: AlbumCharacterArt.SetsunaArmPaper,
             ArmScissorsTexturePath: AlbumCharacterArt.SetsunaArmScissors));
 
+    /// <summary>默认用本体静默猎手补全缺失的场景 / 音效资源。</summary>
+    public override string? PlaceholderCharacterId => Const.HunterSourceId;
+  
+    
     /// <summary>不参与本体 epoch / timeline 进度假设。</summary>
     public override bool RequiresEpochAndTimeline => false;
 
