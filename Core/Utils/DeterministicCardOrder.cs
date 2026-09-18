@@ -2,7 +2,7 @@ using System.Text.Json;
 
 using MegaCrit.Sts2.Core.Models;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 洗牌前把牌列表排成<b>两端一致</b>的顺序。

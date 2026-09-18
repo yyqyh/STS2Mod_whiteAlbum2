@@ -3,9 +3,9 @@ using MegaCrit.Sts2.Core.Entities.Potions;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
-using STS_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Character;
 
-namespace STS_WhiteAlbum2.Core.Potions;
+namespace STS2_WhiteAlbum2.Core.Potions;
 
 /// <summary>
 /// 空白药水：占位，没有任何效果（<see cref="ModPlaceholderPotionTemplate" /> 的默认行为就是无操作）。
@@ -15,7 +15,6 @@ namespace STS_WhiteAlbum2.Core.Potions;
 /// 图标借本体已有的药水图集，不需要 mod 自己的美术。
 /// </remarks>
 [RegisterPotion(typeof(SetsunaPotionPool))]
-[RegisterPotion(typeof(ToumaPotionPool))]
 public sealed class AlbumPotionOne : ModPlaceholderPotionTemplate
 {
     public AlbumPotionOne() : base(PotionRarity.Common, PotionUsage.AnyTime, TargetType.Self)

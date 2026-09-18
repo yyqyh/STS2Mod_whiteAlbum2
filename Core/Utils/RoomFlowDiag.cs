@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.Nodes.Screens.Capstones;
 using MegaCrit.Sts2.Core.Nodes.Screens;
 using MegaCrit.Sts2.Core.Runs;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 房间流程的"里程碑"日志（默认开着，每个点最多 30 条）。

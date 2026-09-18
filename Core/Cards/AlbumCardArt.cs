@@ -1,6 +1,6 @@
 using STS2RitsuLib.Scaffolding.Content;
 
-namespace STS_WhiteAlbum2.Core.Cards;
+namespace STS2_WhiteAlbum2.Core.Cards;
 
 /// <summary>占位卡面：先借本体静默猎手的 <c>card_atlas</c>。</summary>
 internal static class AlbumCardArt

@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
-using STS_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Character;
 
-namespace STS_WhiteAlbum2.Core.Cards;
+namespace STS2_WhiteAlbum2.Core.Cards;
 /// <summary>牌 1：1 费 6 伤（初始卡组 5 张）。</summary>
 [RegisterCard(typeof(ToumaCardPool))]
 [RegisterCharacterStarterCard(typeof(Touma), 5, Order = 10)]

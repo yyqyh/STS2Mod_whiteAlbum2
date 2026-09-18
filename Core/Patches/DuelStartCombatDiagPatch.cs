@@ -5,7 +5,7 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Logging;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 诊断：把 <c>StartCombatInternal</c> 里被吞掉的异常完整打出来。
@@ -50,7 +50,7 @@ internal static class DuelStartCombatDiagPatch
                 throw;
             }
 
-            Log.Error($"[STS_WhiteAlbum2] 战斗启动失败（完整异常）：{ex}");
+            Log.Error($"[STS2_WhiteAlbum2] 战斗启动失败（完整异常）：{ex}");
             throw;
         }
     }

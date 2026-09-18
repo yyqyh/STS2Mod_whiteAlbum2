@@ -4,7 +4,7 @@ using STS2RitsuLib;
 using STS2RitsuLib.Settings;
 using STS2RitsuLib.Utils.Persistence;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 设置界面：一个开关 + 一个回合上限。

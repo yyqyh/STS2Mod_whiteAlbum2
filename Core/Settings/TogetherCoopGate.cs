@@ -1,10 +1,10 @@
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 
-using STS_WhiteAlbum2.Core.Character;
-using STS_WhiteAlbum2.Core.Together.Config;
+using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Together.Config;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 选人阶段关于共生体的两条规则：谁还能"确定"，以及能不能起程。

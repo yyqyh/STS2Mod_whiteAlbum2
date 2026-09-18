@@ -1,4 +1,4 @@
-namespace STS_WhiteAlbum2.Core.Together.Config;
+namespace STS2_WhiteAlbum2.Core.Together.Config;
 
 /// <summary>
 /// 本 mod 的持久化设置。

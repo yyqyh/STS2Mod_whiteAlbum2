@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Runs;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 战斗初始化：每加进来一名玩家就对齐一次决斗布置。
@@ -57,7 +57,7 @@ internal static class DuelStripMonstersPatch
             return true;
         }
 
-        Log.Info($"[STS_WhiteAlbum2] 决斗模式：拦下怪物 {__0.Monster?.Id.Entry ?? "?"} 不进战斗");
+        Log.Info($"[STS2_WhiteAlbum2] 决斗模式：拦下怪物 {__0.Monster?.Id.Entry ?? "?"} 不进战斗");
         return false;
     }
 }

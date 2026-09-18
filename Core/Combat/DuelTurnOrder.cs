@@ -2,7 +2,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Logging;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗的回合顺序：把本体的"所有玩家同时行动"改成"一人一回合，轮流来"。
@@ -78,6 +78,6 @@ internal static class DuelTurnOrder
         _actorIndex++;
         Acted.Add(Actor);
 
-        Log.Info($"[STS_WhiteAlbum2] 本回合行动者：netId={Actor.NetId}");
+        Log.Info($"[STS2_WhiteAlbum2] 本回合行动者：netId={Actor.NetId}");
     }
 }

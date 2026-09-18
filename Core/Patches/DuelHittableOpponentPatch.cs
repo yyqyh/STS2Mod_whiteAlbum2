@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 第三层：把「敌人」从"共享一份列表"改成"每个玩家各有自己的视角"。
@@ -77,7 +77,7 @@ internal static class DuelHittableOpponentPatch
         }
 
         Capped.LogOnce(
-            $"[STS_WhiteAlbum2] 按本机视角重算可选敌人：本机={mine.Player?.NetId ?? 0} "
+            $"[STS2_WhiteAlbum2] 按本机视角重算可选敌人：本机={mine.Player?.NetId ?? 0} "
             + $"对手={theirs.Player?.NetId ?? 0} 候选={merged.Count} 个");
 
         __result = merged;

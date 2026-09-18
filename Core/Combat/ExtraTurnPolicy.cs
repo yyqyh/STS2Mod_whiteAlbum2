@@ -3,7 +3,7 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 额外回合策略（项目决定）：<b>额外回合不清共享状态</b>。

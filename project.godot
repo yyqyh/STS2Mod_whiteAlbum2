@@ -10,13 +10,13 @@ config_version=5
 
 [application]
 
-config/name="STS_WhiteAlbum2"
+config/name="STS2_WhiteAlbum2"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [dotnet]
 
-project/assembly_name="STS_WhiteAlbum2"
+project/assembly_name="STS2_WhiteAlbum2"
 
 [rendering]
 

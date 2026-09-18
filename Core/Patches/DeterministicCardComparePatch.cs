@@ -2,7 +2,7 @@ using HarmonyLib;
 
 using MegaCrit.Sts2.Core.Models;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 让卡牌之间的排序变成<b>全序</b>，从而让 <c>StableShuffle</c> 真正"与输入顺序无关"。

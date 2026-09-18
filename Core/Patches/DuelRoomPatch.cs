@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 事件入口①（调试）：把<b>本局第一个问号房</b>变成决斗事件。
@@ -48,7 +48,7 @@ internal static class DuelFirstUnknownRoomPatch
             return;
         }
 
-        Log.Info("[STS_WhiteAlbum2] 本局第一个问号房 → 决斗事件");
+        Log.Info("[STS2_WhiteAlbum2] 本局第一个问号房 → 决斗事件");
         __result = RoomType.Event;
     }
 }
@@ -76,7 +76,7 @@ internal static class DuelEventRoomPatch
             return;
         }
 
-        Log.Info("[STS_WhiteAlbum2] 用「对决邀请」替换掉随机事件");
+        Log.Info("[STS2_WhiteAlbum2] 用「对决邀请」替换掉随机事件");
 
         // EventRoom 要的是 canonical（不可变）模型：本体自己也是直接传
         // State.Act.PullNextEvent(...) 的结果。给它 Mutable 副本会被 AssertCanonical 拦下。
@@ -164,7 +164,7 @@ internal static class DuelFinalBossRoomPatch
             return true;
         }
 
-        Log.Info("[STS_WhiteAlbum2] 三层最终 boss 已打完 → 生成决斗事件（替换本体结局事件）");
+        Log.Info("[STS2_WhiteAlbum2] 三层最终 boss 已打完 → 生成决斗事件（替换本体结局事件）");
 
         __result = __instance.EnterRoom(new EventRoom(ModelDb.Event<DuelInvitationEvent>()));
         return false;

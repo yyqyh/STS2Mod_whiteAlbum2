@@ -1,8 +1,8 @@
 using MegaCrit.Sts2.Core.Logging;
 
-using STS_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Character;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗的开关与参数：统一从 RitsuLib 的设置存储读。
@@ -33,6 +33,6 @@ internal static class DuelConfig
     {
         PvpSettingsStore.Update(settings => settings.Enabled = value);
 
-        Log.Info($"[STS_WhiteAlbum2] 决斗模式已{(value ? "开启" : "关闭")}");
+        Log.Info($"[STS2_WhiteAlbum2] 决斗模式已{(value ? "开启" : "关闭")}");
     }
 }

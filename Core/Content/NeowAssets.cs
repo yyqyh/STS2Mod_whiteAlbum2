@@ -1,6 +1,6 @@
 using STS2RitsuLib.Scaffolding.Content;
 
-namespace STS_WhiteAlbum2.Core.Ancients;
+namespace STS2_WhiteAlbum2.Core.Ancients;
 
 /// <summary>
 /// 表现资源一律"借本体捏奥的"。

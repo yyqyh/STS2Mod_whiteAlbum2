@@ -1,4 +1,4 @@
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗 mod 的持久化设置。

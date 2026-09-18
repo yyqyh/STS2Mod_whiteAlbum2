@@ -2,7 +2,7 @@ using HarmonyLib;
 
 using MegaCrit.Sts2.Core.Combat;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗里的战斗不能因为「敌方侧没人」就结束。
@@ -33,7 +33,7 @@ internal static class DuelKeepCombatAlivePatch
             return;
         }
 
-        Capped.LogOnce("[STS_WhiteAlbum2] 决斗：敌方侧没有怪物，但不结束战斗（避免开局即判定胜利）");
+        Capped.LogOnce("[STS2_WhiteAlbum2] 决斗：敌方侧没有怪物，但不结束战斗（避免开局即判定胜利）");
         __result = false;
     }
 }

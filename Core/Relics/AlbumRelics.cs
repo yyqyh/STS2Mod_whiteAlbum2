@@ -2,9 +2,9 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
-using STS_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Character;
 
-namespace STS_WhiteAlbum2.Core.Relics;
+namespace STS2_WhiteAlbum2.Core.Relics;
 
 /// <summary>
 /// 空白遗物：只占位，不带任何效果。
@@ -29,7 +29,6 @@ public abstract class BlankAlbumRelic : ModPlaceholderRelicTemplate
 
 /// <summary>初始遗物（两个角色共用，starter 注册写两遍）。</summary>
 [RegisterRelic(typeof(SetsunaRelicPool))]
-[RegisterRelic(typeof(ToumaRelicPool))]
 [RegisterCharacterStarterRelic(typeof(Setsuna), Order = 0)]
 [RegisterCharacterStarterRelic(typeof(Touma), Order = 0)]
 public sealed class AlbumRelicOne : BlankAlbumRelic
@@ -43,7 +42,6 @@ public sealed class AlbumRelicOne : BlankAlbumRelic
 
 /// <summary>普通稀有度占位遗物（补遗物奖励/商店）。</summary>
 [RegisterRelic(typeof(SetsunaRelicPool))]
-[RegisterRelic(typeof(ToumaRelicPool))]
 public sealed class AlbumRelicTwo : BlankAlbumRelic
 {
     public AlbumRelicTwo() : base(RelicRarity.Common)
@@ -55,7 +53,6 @@ public sealed class AlbumRelicTwo : BlankAlbumRelic
 
 /// <summary>稀有稀有度占位遗物（补遗物奖励/商店）。</summary>
 [RegisterRelic(typeof(SetsunaRelicPool))]
-[RegisterRelic(typeof(ToumaRelicPool))]
 public sealed class AlbumRelicThree : BlankAlbumRelic
 {
     public AlbumRelicThree() : base(RelicRarity.Rare)

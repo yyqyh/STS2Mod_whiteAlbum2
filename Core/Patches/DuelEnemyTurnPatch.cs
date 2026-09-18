@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 路线 A：接管敌方回合，让"站在敌方侧的玩家"真的能操作。
@@ -90,7 +90,7 @@ internal static class DuelEnemyTurnPatch
             }
 
             // 决斗里不该出现怪物（AddCreature 已经拦下了）；真出现也不驱动它，避免误伤玩家。
-            Capped.LogOnce($"[STS_WhiteAlbum2] 敌方侧出现非玩家单位，已跳过：{enemy.Monster?.Id.Entry ?? "?"}");
+            Capped.LogOnce($"[STS2_WhiteAlbum2] 敌方侧出现非玩家单位，已跳过：{enemy.Monster?.Id.Entry ?? "?"}");
         }
 
         RunManager.Instance.ChecksumTracker.GenerateChecksum("After enemy turn end", null);
@@ -104,7 +104,7 @@ internal static class DuelEnemyTurnPatch
         }
         catch (Exception ex)
         {
-            Log.Error($"[STS_WhiteAlbum2] 收尾敌方回合失败：{ex}");
+            Log.Error($"[STS2_WhiteAlbum2] 收尾敌方回合失败：{ex}");
         }
     }
 
@@ -116,7 +116,7 @@ internal static class DuelEnemyTurnPatch
             return;
         }
 
-        Log.Info($"[STS_WhiteAlbum2] 对手 netId={opponent.NetId} 的回合开始");
+        Log.Info($"[STS2_WhiteAlbum2] 对手 netId={opponent.NetId} 的回合开始");
 
         // 这个 context 就是本体 StartTurn 里造的那个东西；构造函数是公开的，所以能自己造。
         var choiceContext = new HookPlayerChoiceContext(
@@ -150,13 +150,13 @@ internal static class DuelEnemyTurnPatch
         // 敌方回合里本体把"玩家操作"禁用了（那回合本来是给怪物的）；决斗里这回合是玩家的，要放开，
         // 否则对手看得到手牌却点不动、也就永远点不了结束回合。
         ActionsDisabledField(CombatManager.Instance) = false;
-        Capped.LogOnce("[STS_WhiteAlbum2] 敌方回合里放开了玩家操作（这个回合其实是玩家的）");
+        Capped.LogOnce("[STS2_WhiteAlbum2] 敌方回合里放开了玩家操作（这个回合其实是玩家的）");
 
         // 等他自己点"结束回合"。
         var completion = DuelTurnBridge.Expect(opponent);
         await completion.Task;
 
-        Log.Info($"[STS_WhiteAlbum2] 对手 netId={opponent.NetId} 结束了回合");
+        Log.Info($"[STS2_WhiteAlbum2] 对手 netId={opponent.NetId} 结束了回合");
     }
 }
 

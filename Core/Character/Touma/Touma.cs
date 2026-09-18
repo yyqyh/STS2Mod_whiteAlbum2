@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 
-namespace STS_WhiteAlbum2.Core.Character;
+namespace STS2_WhiteAlbum2.Core.Character;
 
 /// <summary>
 /// 角色：<b>冬马（Touma）</b>。
@@ -36,6 +36,7 @@ public sealed class Touma : ModCharacterTemplate<ToumaCardPool, ToumaRelicPool, 
         Ui: new CharacterUiAssetSet(
             IconTexturePath: AlbumCharacterArt.ToumaTopIcon,
             IconOutlineTexturePath: AlbumCharacterArt.ToumaTopIconOutline,
+            CharacterSelectBgPath: AlbumCharacterArt.ToumaSelectBgScene,
             CharacterSelectIconPath: AlbumCharacterArt.ToumaSelectIcon,
             CharacterSelectLockedIconPath: AlbumCharacterArt.ToumaSelectLockedIcon,
             MapMarkerPath: AlbumCharacterArt.ToumaMapMarker),

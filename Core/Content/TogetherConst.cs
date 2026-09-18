@@ -2,7 +2,7 @@ using MegaCrit.Sts2.Core.Logging;
 
 using STS2RitsuLib;
 
-namespace STS_WhiteAlbum2.Core.Together;
+namespace STS2_WhiteAlbum2.Core.Together;
 
 /// <summary>
 /// 全局常量：ModId 与全部资源路径。
@@ -22,10 +22,10 @@ namespace STS_WhiteAlbum2.Core.Together;
 public static class Const
 {
     /// <summary>Mod 唯一标识。必须与清单 id、DLL 名、PCK 名一致——见类型注释。</summary>
-    public const string ModId = "STS_WhiteAlbum2";
+    public const string ModId = "STS2_WhiteAlbum2";
 
     /// <summary>显示用名称（清单里另有展示名，这里给代码侧用）。</summary>
-    public const string Name = "STS_WhiteAlbum2";
+    public const string Name = "STS2_WhiteAlbum2";
 
     /// <summary>版本号，与清单 <c>version</c> 保持一致。</summary>
     public const string Version = "0.1.0";
@@ -78,7 +78,7 @@ public static class Const
         // ======================================================================
 
         /// <summary>内容根目录：Godot 工程下的 <c>together/</c>。</summary>
-        public const string Root = "res://STS_WhiteAlbum2/together";
+        public const string Root = "res://STS2_WhiteAlbum2/together";
 
         public const string ImagesRoot = Root + "/images";
         public const string ScenesRoot = Root + "/scenes";

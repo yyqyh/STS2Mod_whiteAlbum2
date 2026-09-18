@@ -3,9 +3,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 using MegaCrit.Sts2.Core.Runs;
 
-using STS_WhiteAlbum2.Core.Together.Config;
+using STS2_WhiteAlbum2.Core.Together.Config;
 
-namespace STS_WhiteAlbum2.Core.Character;
+namespace STS2_WhiteAlbum2.Core.Character;
 
 /// <summary>
 /// 本 mod 两个角色（猎人·一号 / 猎人·二号）的使用规则。

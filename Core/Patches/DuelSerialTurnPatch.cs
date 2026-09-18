@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Logging;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 读 internal 的 <c>CombatTurnState</c>（类型本身是 internal，只能反射进去）。
@@ -99,7 +99,7 @@ internal static class DuelActorTurnPatch
         // 不换行动者、不加人，原样放行。
         if (participants.Count > 0)
         {
-            Capped.LogOnce("[STS_WhiteAlbum2] 这一回合是本体的额外回合，原样放行（不换行动者）");
+            Capped.LogOnce("[STS2_WhiteAlbum2] 这一回合是本体的额外回合，原样放行（不换行动者）");
             return;
         }
 
@@ -114,7 +114,7 @@ internal static class DuelActorTurnPatch
         participants.Add(actor);
 
         Log.Info(
-            $"[STS_WhiteAlbum2] 本回合只有 netId={actor.NetId} 行动"
+            $"[STS2_WhiteAlbum2] 本回合只有 netId={actor.NetId} 行动"
             + "（对手不抽牌、不清格挡、手牌原样留到自己回合）");
     }
 }
@@ -167,7 +167,7 @@ internal static class DuelTurnNumberPatch
 
         if (!counts)
         {
-            Capped.LogOnce("[STS_WhiteAlbum2] 跳过非行动者的回合数自增（他这一轮没出手）");
+            Capped.LogOnce("[STS2_WhiteAlbum2] 跳过非行动者的回合数自增（他这一轮没出手）");
         }
 
         return counts;

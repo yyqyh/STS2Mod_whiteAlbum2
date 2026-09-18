@@ -4,7 +4,7 @@ using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗里那两个"名不副实"的回合横幅：一个是多出来的"敌方回合"，一个是被叫成"额外回合"的普通回合。
@@ -63,7 +63,7 @@ internal static class DuelEnemyTurnBannerPatch
 
         // 返回 null 是安全的：加节点的地方用的是 AddChildSafely，它自带 null 判断。
         __result = null;
-        Capped.LogOnce("[STS_WhiteAlbum2] 决斗里不再弹「敌方回合」横幅（那一回合没有敌人）");
+        Capped.LogOnce("[STS2_WhiteAlbum2] 决斗里不再弹「敌方回合」横幅（那一回合没有敌人）");
         return false;
     }
 }

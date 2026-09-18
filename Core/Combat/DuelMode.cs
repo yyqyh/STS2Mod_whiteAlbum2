@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Runs;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗模式的战斗改造：清掉怪物，把第二名玩家挪到敌方侧。
@@ -82,11 +82,11 @@ internal static class DuelMode
 
             EnemiesField(state).Add(dummy);
 
-            Log.Info("[STS_WhiteAlbum2] 已在敌方侧放置训练假人（不还手，避免敌方回合空转）");
+            Log.Info("[STS2_WhiteAlbum2] 已在敌方侧放置训练假人（不还手，避免敌方回合空转）");
         }
         catch (Exception ex)
         {
-            Log.Error($"[STS_WhiteAlbum2] 放置训练假人失败：{ex}");
+            Log.Error($"[STS2_WhiteAlbum2] 放置训练假人失败：{ex}");
         }
     }
 
@@ -142,7 +142,7 @@ internal static class DuelMode
             DuelState.TakeForNewCombat();
 
             Log.Info(
-                $"[STS_WhiteAlbum2] 新的战斗：allies={state.Allies.Count} "
+                $"[STS2_WhiteAlbum2] 新的战斗：allies={state.Allies.Count} "
                 + $"enemies={state.Enemies.Count} players={state.Players.Count}");
         }
 
@@ -203,11 +203,11 @@ internal static class DuelMode
 
             writer.RecordInitialState(run.ToSave(null));
 
-            Capped.LogOnce("[STS_WhiteAlbum2] 决斗：补上战斗录像的初始快照（本体只在走地图点/直接进房时才记）");
+            Capped.LogOnce("[STS2_WhiteAlbum2] 决斗：补上战斗录像的初始快照（本体只在走地图点/直接进房时才记）");
         }
         catch (Exception ex)
         {
-            Log.Warn($"[STS_WhiteAlbum2] 补战斗录像快照失败（不影响战斗）：{ex.Message}");
+            Log.Warn($"[STS2_WhiteAlbum2] 补战斗录像快照失败（不影响战斗）：{ex.Message}");
         }
     }
 
@@ -224,11 +224,11 @@ internal static class DuelMode
             try
             {
                 state.RemoveCreature(creature, unattach: true);
-                Log.Info($"[STS_WhiteAlbum2] 移除怪物：{creature.Monster?.Id.Entry ?? "?"}");
+                Log.Info($"[STS2_WhiteAlbum2] 移除怪物：{creature.Monster?.Id.Entry ?? "?"}");
             }
             catch (Exception ex)
             {
-                Log.Warn($"[STS_WhiteAlbum2] 移除怪物失败：{ex.Message}");
+                Log.Warn($"[STS2_WhiteAlbum2] 移除怪物失败：{ex.Message}");
             }
         }
     }
@@ -270,11 +270,11 @@ internal static class DuelMode
             SideField(opponent) = CombatSide.Enemy;
             state.AddCreature(opponent);
 
-            Log.Info($"[STS_WhiteAlbum2] 对手 netId={state.Players[1].NetId} 已移到敌方侧（立绘与目标选择都跟着对）");
+            Log.Info($"[STS2_WhiteAlbum2] 对手 netId={state.Players[1].NetId} 已移到敌方侧（立绘与目标选择都跟着对）");
         }
         catch (Exception ex)
         {
-            Log.Error($"[STS_WhiteAlbum2] 移动对手到敌方侧失败：{ex}");
+            Log.Error($"[STS2_WhiteAlbum2] 移动对手到敌方侧失败：{ex}");
         }
     }
 
@@ -292,7 +292,7 @@ internal static class DuelMode
             return;
         }
 
-        Log.Info($"[STS_WhiteAlbum2] 决斗结束：{(victory ? "我方胜利" : "我方失败")}");
+        Log.Info($"[STS2_WhiteAlbum2] 决斗结束：{(victory ? "我方胜利" : "我方失败")}");
 
         if (CombatManager.Instance.IsInProgress)
         {

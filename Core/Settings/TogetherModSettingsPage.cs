@@ -6,11 +6,11 @@ using STS2RitsuLib;
 using STS2RitsuLib.Settings;
 using STS2RitsuLib.Utils.Persistence;
 
-using STS_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
-using STS_WhiteAlbum2.Core.Pvp;
+using STS2_WhiteAlbum2.Core.Pvp;
 
-namespace STS_WhiteAlbum2.Core.Together.Config;
+namespace STS2_WhiteAlbum2.Core.Together.Config;
 
 /// <summary>
 /// 设置界面：只有一个总开关（共生体）。

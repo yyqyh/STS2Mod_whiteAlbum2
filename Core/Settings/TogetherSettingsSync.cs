@@ -8,9 +8,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 using STS2RitsuLib.Networking.Sidecar;
 
-using STS_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
-namespace STS_WhiteAlbum2.Core.Together.Config;
+namespace STS2_WhiteAlbum2.Core.Together.Config;
 
 /// <summary>
 /// 联机时的"共享角色"设置同步：<b>以主机为准</b>。

@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 
-namespace STS_WhiteAlbum2.Core.Character;
+namespace STS2_WhiteAlbum2.Core.Character;
 
 /// <summary>
 /// 角色：<b>雪菜（Setsuna）</b>。
@@ -43,6 +43,7 @@ public sealed class Setsuna : ModCharacterTemplate<SetsunaCardPool, SetsunaRelic
         Ui: new CharacterUiAssetSet(
             IconTexturePath: AlbumCharacterArt.SetsunaTopIcon,
             IconOutlineTexturePath: AlbumCharacterArt.SetsunaTopIconOutline,
+            CharacterSelectBgPath: AlbumCharacterArt.SetsunaSelectBgScene,
             CharacterSelectIconPath: AlbumCharacterArt.SetsunaSelectIcon,
             CharacterSelectLockedIconPath: AlbumCharacterArt.SetsunaSelectLockedIcon,
             MapMarkerPath: AlbumCharacterArt.SetsunaMapMarker),

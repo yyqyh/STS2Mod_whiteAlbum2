@@ -1,6 +1,6 @@
 using MegaCrit.Sts2.Core.Entities.Creatures;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>共享身体相关的小工具。</summary>
 internal static class CreaturePartnerExtensions

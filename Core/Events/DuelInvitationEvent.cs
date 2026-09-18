@@ -7,9 +7,9 @@ using MegaCrit.Sts2.Core.Rewards;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
-using STS_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗的入口事件：「对决邀请」。
@@ -54,7 +54,7 @@ public sealed class DuelInvitationEvent : ModEventTemplate
     /// 图确实打进 PCK 了，但运行时读不到。本体的资源一定在索引里，所以直接引用它最省事。
     /// </para>
     /// <para>
-    /// 以后要换成自己的立绘，把这张图换成 <c>res://STS_WhiteAlbum2/images/events/xxx.png</c> 即可，
+    /// 以后要换成自己的立绘，把这张图换成 <c>res://STS2_WhiteAlbum2/images/events/xxx.png</c> 即可，
     /// 但要先把"mod 资源进不了索引"这件事解决掉。
     /// </para>
     /// </remarks>
@@ -73,7 +73,7 @@ public sealed class DuelInvitationEvent : ModEventTemplate
     {
         if (!DuelConfig.Enabled)
         {
-            Log.Warn("[STS_WhiteAlbum2] 决斗事件被触发，但本局不满足“两个不同 mod 角色”条件，忽略");
+            Log.Warn("[STS2_WhiteAlbum2] 决斗事件被触发，但本局不满足“两个不同 mod 角色”条件，忽略");
             SetEventFinished(PageDescription("BEGIN"));
             return Task.CompletedTask;
         }

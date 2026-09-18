@@ -10,9 +10,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 using STS2RitsuLib.Networking.Sidecar;
 
-using STS_WhiteAlbum2.Core.Together.Config;
+using STS2_WhiteAlbum2.Core.Together.Config;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 共生体成员：在选人界面按了"确定为共生体"的玩家集合。

@@ -1,6 +1,6 @@
 using MegaCrit.Sts2.Core.Logging;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 有上限的普通日志。

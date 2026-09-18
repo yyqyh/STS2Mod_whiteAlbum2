@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗里「敌人」的定义：<b>敌人 = 另一位玩家</b>，而不是「站在敌方阵营的单位」。
@@ -119,8 +119,8 @@ internal static class DuelCardTargetValidityPatch
         __result = allowed.Value;
 
         Capped.LogOnce(allowed.Value
-            ? "[STS_WhiteAlbum2] 目标校验：对手被当作「敌人」放行（AnyEnemy）"
-            : "[STS_WhiteAlbum2] 目标校验：对手不再被当作「队友」（AnyAlly）");
+            ? "[STS2_WhiteAlbum2] 目标校验：对手被当作「敌人」放行（AnyEnemy）"
+            : "[STS2_WhiteAlbum2] 目标校验：对手不再被当作「队友」（AnyAlly）");
     }
 }
 
@@ -154,7 +154,7 @@ internal static class DuelPotionTargetValidityPatch
 
         __result = allowed.Value;
 
-        Capped.LogOnce("[STS_WhiteAlbum2] 目标校验：药水也可以指向对手了");
+        Capped.LogOnce("[STS2_WhiteAlbum2] 目标校验：药水也可以指向对手了");
     }
 }
 
@@ -199,7 +199,7 @@ internal static class DuelTargetManagerOpponentPatch
         if (targetType == TargetType.AnyEnemy)
         {
             __result = true;
-            Capped.LogOnce("[STS_WhiteAlbum2] 选中 UI：对手现在可以悬停/点击选中（当作敌人）");
+            Capped.LogOnce("[STS2_WhiteAlbum2] 选中 UI：对手现在可以悬停/点击选中（当作敌人）");
         }
         else if (targetType == TargetType.AnyAlly)
         {

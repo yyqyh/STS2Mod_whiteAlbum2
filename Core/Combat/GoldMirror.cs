@@ -4,9 +4,9 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Logging;
 
-using STS_WhiteAlbum2.Core.Together.Config;
+using STS2_WhiteAlbum2.Core.Together.Config;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 金币共享（可选）：组内只有一个钱包。

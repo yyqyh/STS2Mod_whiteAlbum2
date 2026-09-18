@@ -1,4 +1,4 @@
-namespace STS_WhiteAlbum2.Core.Character;
+namespace STS2_WhiteAlbum2.Core.Character;
 
 /// <summary>
 /// 两个角色的静态占位美术路径。
@@ -9,7 +9,7 @@ namespace STS_WhiteAlbum2.Core.Character;
 /// </remarks>
 internal static class AlbumCharacterArt
 {
-    public const string Root = "res://STS_WhiteAlbum2/images/character";
+    public const string Root = "res://STS2_WhiteAlbum2/images/character";
 
     public const string SetsunaRoot = Root + "/setsuna";
     public const string ToumaRoot = Root + "/touma";
@@ -20,6 +20,7 @@ internal static class AlbumCharacterArt
     public const string SetsunaTopIconOutline = SetsunaRoot + "/character_icon_setsuna_outline.png";
     public const string SetsunaMapMarker = SetsunaRoot + "/map_marker_setsuna.png";
     public const string SetsunaSelectBg = SetsunaRoot + "/select_bg.png";
+    public const string SetsunaSelectBgScene = "res://STS2_WhiteAlbum2/scenes/char_select/select_bg_setsuna.tscn";
     public const string SetsunaCombatPortrait = SetsunaRoot + "/character.png";
     public const string SetsunaEnergyIcon = SetsunaRoot + "/energy_icon.png";
     public const string SetsunaShop = SetsunaRoot + "/shop.png";
@@ -36,6 +37,7 @@ internal static class AlbumCharacterArt
     public const string ToumaTopIconOutline = ToumaRoot + "/character_icon_touma_outline.png";
     public const string ToumaMapMarker = ToumaRoot + "/map_marker_touma.png";
     public const string ToumaSelectBg = ToumaRoot + "/select_bg.png";
+    public const string ToumaSelectBgScene = "res://STS2_WhiteAlbum2/scenes/char_select/select_bg_touma.tscn";
     public const string ToumaCombatPortrait = ToumaRoot + "/character.png";
     public const string ToumaEnergyIcon = ToumaRoot + "/energy_icon.png";
     public const string ToumaShop = ToumaRoot + "/shop.png";

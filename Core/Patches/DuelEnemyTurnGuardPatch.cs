@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 兜底：决斗里"站在敌方侧的玩家"不能走怪物 AI。
@@ -44,7 +44,7 @@ internal static class DuelSkipPlayerTakeTurnPatch
             return true;
         }
 
-        Capped.LogOnce($"[STS_WhiteAlbum2] 跳过「敌方侧玩家」的怪物回合（netId={__instance.Player?.NetId}）");
+        Capped.LogOnce($"[STS2_WhiteAlbum2] 跳过「敌方侧玩家」的怪物回合（netId={__instance.Player?.NetId}）");
 
         // TakeTurn 是 async 方法：返回 false 必须自己回填 Task，
         // 否则调用方拿到 null，之后 await/Task.WhenAny 就会 NRE。
@@ -96,7 +96,7 @@ internal static class DuelSkipPlayerAfterAddedToRoomPatch
             return true;
         }
 
-        Capped.LogOnce($"[STS_WhiteAlbum2] 跳过「敌方侧玩家」的房间加入回调（没有 Monster 可跑）");
+        Capped.LogOnce($"[STS2_WhiteAlbum2] 跳过「敌方侧玩家」的房间加入回调（没有 Monster 可跑）");
 
         // AfterAddedToRoom 是 async：返回 false 要回填 Task。
         __result = Task.CompletedTask;
@@ -128,7 +128,7 @@ internal static class DuelSkipPlayerRollMovePatch
             return true;
         }
 
-        Capped.LogOnce($"[STS_WhiteAlbum2] 跳过「敌方侧玩家」的 RollMove（没有 Monster 可掷意图）");
+        Capped.LogOnce($"[STS2_WhiteAlbum2] 跳过「敌方侧玩家」的 RollMove（没有 Monster 可掷意图）");
 
         // AfterCreatureAdded 是 async：返回 false 要回填 Task。
         __result = Task.CompletedTask;
@@ -157,7 +157,7 @@ internal static class DuelSkipPlayerPrepareForNextTurnPatch
             return true;
         }
 
-        Capped.LogOnce($"[STS_WhiteAlbum2] 跳过「敌方侧玩家」的回合准备（没有 Monster 可掷意图）");
+        Capped.LogOnce($"[STS2_WhiteAlbum2] 跳过「敌方侧玩家」的回合准备（没有 Monster 可掷意图）");
         return false;
     }
 }

@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 
-namespace STS_WhiteAlbum2.Core.Character;
+namespace STS2_WhiteAlbum2.Core.Character;
 
 /// <summary>Touma 的卡池 / 遗物池 / 药水池。</summary>
 public sealed class ToumaCardPool : CardPoolModel

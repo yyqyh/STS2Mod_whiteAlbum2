@@ -1,7 +1,7 @@
 using STS2RitsuLib;
 using STS2RitsuLib.Utils.Persistence;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 设置的持久化入口（RitsuLib 数据存储）。
@@ -14,7 +14,7 @@ internal static class PvpSettingsStore
 {
     internal const string DataKey = "pvp_settings";
 
-    private const string FileName = "STS_WhiteAlbum2_pvp_settings.json";
+    private const string FileName = "STS2_WhiteAlbum2_pvp_settings.json";
 
     private static bool _initialized;
 

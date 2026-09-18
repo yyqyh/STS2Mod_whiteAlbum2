@@ -6,10 +6,10 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 
-using STS_WhiteAlbum2.Core.Character;
-using STS_WhiteAlbum2.Core.Settings;
+using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Settings;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 选人界面的 mod 角色可见性：单人隐藏，联机作为额外角色出现。
@@ -43,7 +43,7 @@ internal static class CharacterSelectGateImpl
         }
         catch (Exception ex)
         {
-            Log.Warn($"[STS_WhiteAlbum2] 选人界面角色可见性刷新失败（不影响原版选人）：{ex.Message}");
+            Log.Warn($"[STS2_WhiteAlbum2] 选人界面角色可见性刷新失败（不影响原版选人）：{ex.Message}");
         }
     }
 

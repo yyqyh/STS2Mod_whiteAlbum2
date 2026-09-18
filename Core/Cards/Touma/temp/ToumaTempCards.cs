@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
-using STS_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Character;
 
-namespace STS_WhiteAlbum2.Core.Cards;
+namespace STS2_WhiteAlbum2.Core.Cards;
 /// <summary>临时占位牌：基础攻击 1。</summary>
 [RegisterCard(typeof(ToumaCardPool))]
 public sealed class ToumaTempBasicAttack1 : ModCardTemplate

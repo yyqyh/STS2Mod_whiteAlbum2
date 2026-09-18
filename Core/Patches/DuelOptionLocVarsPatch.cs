@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 吞掉决斗事件选项在"角色变量注入"那一步抛出的异常。
@@ -43,7 +43,7 @@ internal static class DuelOptionLocVarsPatch
         }
 
         Log.Warn(
-            $"[STS_WhiteAlbum2] 已吞掉决斗事件选项的角色变量注入异常（文案已就绪，不影响显示）："
+            $"[STS2_WhiteAlbum2] 已吞掉决斗事件选项的角色变量注入异常（文案已就绪，不影响显示）："
             + $"{__exception.GetType().Name}: {__exception.Message}");
 
         return null;

@@ -6,11 +6,11 @@ using STS2RitsuLib;
 using STS2RitsuLib.Settings;
 using STS2RitsuLib.Utils.Persistence;
 
-using STS_WhiteAlbum2.Core.Pvp;
-using STS_WhiteAlbum2.Core.Together.Config;
-using STS_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Pvp;
+using STS2_WhiteAlbum2.Core.Together.Config;
+using STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
-namespace STS_WhiteAlbum2.Core.Settings;
+namespace STS2_WhiteAlbum2.Core.Settings;
 
 /// <summary>
 /// 本 mod 的统一设置页：debug 总开关 / together / pvp 三节。
@@ -228,8 +228,8 @@ internal static class AlbumSettingsPage
                         ModSettingsText.Literal("单人可以看见 Setsuna / Touma"),
                         singleplayerCharacterBinding,
                         ModSettingsText.Literal(
-                            "默认关闭：两个角色只在联机角色选择界面出现。\n"
-                            + "打开后，单人角色选择界面也会显示这两个角色，方便单人测试。"));
+                            "默认开启：单人角色选择界面也会显示 Setsuna / Touma，方便单人测试。\n"
+                            + "关闭后，两个角色只在联机角色选择界面出现。"));
             });
 
             page.AddSection("pvp", section =>

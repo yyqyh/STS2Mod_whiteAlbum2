@@ -8,20 +8,20 @@ using STS2RitsuLib;
 using STS2RitsuLib.Content;
 using STS2RitsuLib.Interop;
 
-using STS_WhiteAlbum2.Core.Cards;
-using STS_WhiteAlbum2.Core.Character;
-using STS_WhiteAlbum2.Core.Settings;
-using STS_WhiteAlbum2.Core.Ancients;
-using STS_WhiteAlbum2.Core.Pvp;
-using STS_WhiteAlbum2.Core.Together.Config;
-using STS_WhiteAlbum2.Core.Together.Multiplayer;
-using STS_WhiteAlbum2.Core.Potions;
-using STS_WhiteAlbum2.Core.Relics;
+using STS2_WhiteAlbum2.Core.Cards;
+using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Settings;
+using STS2_WhiteAlbum2.Core.Ancients;
+using STS2_WhiteAlbum2.Core.Pvp;
+using STS2_WhiteAlbum2.Core.Together.Config;
+using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Potions;
+using STS2_WhiteAlbum2.Core.Relics;
 
-namespace STS_WhiteAlbum2;
+namespace STS2_WhiteAlbum2;
 
 /// <summary>
-/// STS_WHITE_ALBUM2 入口：逐类安装补丁。
+/// STS2_WHITE_ALBUM2 入口：逐类安装补丁。
 /// </summary>
 /// <remarks>
 /// <para>

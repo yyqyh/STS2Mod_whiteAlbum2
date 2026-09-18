@@ -2,7 +2,7 @@ using HarmonyLib;
 
 using MegaCrit.Sts2.Core.Runs;
 
-namespace STS_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
 
 /// <summary>
 /// 新跑局：等 <c>RunState</c> 完全构造完之后再激活共享配对。

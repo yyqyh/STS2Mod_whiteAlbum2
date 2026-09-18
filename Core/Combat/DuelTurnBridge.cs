@@ -1,6 +1,6 @@
 using MegaCrit.Sts2.Core.Entities.Players;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 「等对手结束回合」的信号桥。

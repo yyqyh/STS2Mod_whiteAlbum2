@@ -2,7 +2,7 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using STS2RitsuLib.Content;
 
-namespace STS_WhiteAlbum2.Core.Ancients;
+namespace STS2_WhiteAlbum2.Core.Ancients;
 
 /// <summary>
 /// 「哪一幕换成什么」的唯一清单。

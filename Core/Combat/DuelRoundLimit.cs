@@ -1,6 +1,6 @@
 using MegaCrit.Sts2.Core.Logging;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 回合上限：打满 N 个回合还没分出胜负，就按双方剩余血量比例判定。
@@ -56,7 +56,7 @@ internal static class DuelRoundLimit
         var victory = myRatio > theirRatio;
 
         Log.Info(
-            $"[STS_WhiteAlbum2] 达到回合上限 {MaxRounds}：我方 {myRatio:P0} vs 对手 {theirRatio:P0} → "
+            $"[STS2_WhiteAlbum2] 达到回合上限 {MaxRounds}：我方 {myRatio:P0} vs 对手 {theirRatio:P0} → "
             + (victory ? "判定胜利" : "判定失败"));
 
         DuelMode.EndRun(victory);

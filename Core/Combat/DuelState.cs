@@ -1,6 +1,6 @@
 using MegaCrit.Sts2.Core.Logging;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 「这场战斗是不是决斗」——把决斗限制在事件触发的那一场，普通战斗完全不受影响。
@@ -23,7 +23,7 @@ internal static class DuelState
     public static void ArmForNextCombat()
     {
         Armed = true;
-        Log.Info("[STS_WhiteAlbum2] 已登记：下一场战斗为决斗");
+        Log.Info("[STS2_WhiteAlbum2] 已登记：下一场战斗为决斗");
     }
 
     /// <summary>新的一场战斗开始：消费标记（只对下一场有效）。</summary>
@@ -33,8 +33,8 @@ internal static class DuelState
         Armed = false;
 
         Log.Info(InDuel
-            ? "[STS_WhiteAlbum2] 这场战斗是决斗"
-            : "[STS_WhiteAlbum2] 这场是普通战斗（不做任何改造）");
+            ? "[STS2_WhiteAlbum2] 这场战斗是决斗"
+            : "[STS2_WhiteAlbum2] 这场是普通战斗（不做任何改造）");
     }
 
     public static void Clear()

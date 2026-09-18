@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 
-namespace STS_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Pvp;
 
 /// <summary>
 /// 决斗站位：<b>P1 固定站左边、P2 固定站右边，两人拉开、面对面</b>。
@@ -77,7 +77,7 @@ internal static class DuelOpponentVisualPatch
         }
         catch (Exception ex)
         {
-            Log.Warn($"[STS_WhiteAlbum2] 决斗站位失败（不影响战斗）：{ex.Message}");
+            Log.Warn($"[STS2_WhiteAlbum2] 决斗站位失败（不影响战斗）：{ex.Message}");
         }
     }
 
@@ -95,7 +95,7 @@ internal static class DuelOpponentVisualPatch
         Place(room, p2.Creature, onLeft: false);
 
         Capped.LogOnce(
-            $"[STS_WhiteAlbum2] 决斗站位：P1(netId={p1.NetId}) 左 {room.GetCreatureNode(p1.Creature)?.Position}"
+            $"[STS2_WhiteAlbum2] 决斗站位：P1(netId={p1.NetId}) 左 {room.GetCreatureNode(p1.Creature)?.Position}"
             + $"，P2(netId={p2.NetId}) 右 {room.GetCreatureNode(p2.Creature)?.Position}"
             + $"（右侧立绘已反向）");
     }
@@ -129,7 +129,7 @@ internal static class DuelOpponentVisualPatch
         if (node.Hitbox is { } hitbox && hitbox.MouseFilter == Control.MouseFilterEnum.Ignore)
         {
             hitbox.MouseFilter = Control.MouseFilterEnum.Stop;
-            Capped.LogOnce("[STS_WhiteAlbum2] 对手立绘的 Hitbox 原本不可交互，已恢复（否则鼠标点不到）");
+            Capped.LogOnce("[STS2_WhiteAlbum2] 对手立绘的 Hitbox 原本不可交互，已恢复（否则鼠标点不到）");
         }
     }
 
