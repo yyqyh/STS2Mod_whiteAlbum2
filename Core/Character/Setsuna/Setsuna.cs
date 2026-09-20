@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 
-namespace STS2_WhiteAlbum2.Core.Character;
+namespace STS2_WhiteAlbum2.Core.Character.Setsuna;
 
 /// <summary>
 /// 角色：<b>雪菜（Setsuna）</b>。
@@ -34,10 +34,12 @@ public sealed class Setsuna : ModCharacterTemplate<SetsunaCardPool, SetsunaRelic
     public override int StartingGold => 99;
 
     public override CharacterGender Gender => CharacterGender.Feminine;
-
+    
 
     /// <summary>静态占位美术：选人立绘、顶栏图标、地图标记。</summary>
     public override CharacterAssetProfile AssetProfile => new(
+        Scenes: new CharacterSceneAssetSet(
+            EnergyCounterPath: "res://STS2_WhiteAlbum2/scenes/ui/energy_counters/setsuna_energy_counter.tscn"),
         Ui: new CharacterUiAssetSet(
             IconTexturePath: AlbumCharacterArt.SetsunaTopIcon,
             IconOutlineTexturePath: AlbumCharacterArt.SetsunaTopIconOutline,

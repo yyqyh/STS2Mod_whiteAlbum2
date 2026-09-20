@@ -4,9 +4,9 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
-using STS2_WhiteAlbum2.Core.Patches.Together;
+using STS2_WhiteAlbum2.Core.Combat.Together;
 
-namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Utils;
 
 /// <summary>
 /// 自检日志：在生成校验和之前把共享状态打印出来。

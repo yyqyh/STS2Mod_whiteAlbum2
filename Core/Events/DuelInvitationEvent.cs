@@ -3,14 +3,13 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Acts;
 using MegaCrit.Sts2.Core.Models.Encounters;
-using MegaCrit.Sts2.Core.Rewards;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
-
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Combat.Duel;
+using STS2_WhiteAlbum2.Core.Combat.Together;
 using STS2_WhiteAlbum2.Core.Settings;
 
-namespace STS2_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Events;
 
 /// <summary>
 /// 决斗的入口事件：「对决邀请」。
@@ -27,7 +26,7 @@ namespace STS2_WhiteAlbum2.Core.Pvp;
 /// </para>
 /// <para>
 /// 进战斗走的是<b>选项回调里的 <c>EnterCombatWithoutExitingEvent</c></b>，而不是覆盖
-/// <c>CanonicalEncounter</c>。后者会让本体走"事件战斗"那条更早的初始化路径 ——
+/// <c>CanonicalEncounter</c>。后者会让本体走"事件战斗"那条更早地初始化路径 ——
 /// 实测那条路上事件还没绑好 Owner，<c>EventOption</c> 构造时会在
 /// <c>CharacterModel.AddDetailsTo</c> 里 NRE。
 /// </para>

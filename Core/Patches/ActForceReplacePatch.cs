@@ -4,8 +4,9 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 
-using STS2_WhiteAlbum2.Core.Character;
-using STS2_WhiteAlbum2.Core.Ancients;
+using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Utils;
+using STS2_WhiteAlbum2.Core.Content;
 
 namespace STS2_WhiteAlbum2.Core.Patches;
 

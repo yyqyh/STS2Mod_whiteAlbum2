@@ -1,8 +1,11 @@
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using STS2RitsuLib.Content;
+using STS2_WhiteAlbum2.Core.Events;
+using STS2_WhiteAlbum2.Core.Combat;
+using STS2_WhiteAlbum2.Core.Relics;
 
-namespace STS2_WhiteAlbum2.Core.Ancients;
+namespace STS2_WhiteAlbum2.Core.Content;
 
 /// <summary>
 /// 「哪一幕换成什么」的唯一清单。

@@ -8,8 +8,8 @@ using MegaCrit.Sts2.Core.Runs;
 
 using STS2RitsuLib.Networking.Sidecar;
 
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
-
+using STS2_WhiteAlbum2.Core.Combat.Together;
+using STS2_WhiteAlbum2.Core.Content;
 namespace STS2_WhiteAlbum2.Core.Settings;
 
 /// <summary>联机时的设置同步：<b>以主机为准</b>，客户端跟随。</summary>

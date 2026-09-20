@@ -29,7 +29,7 @@ public sealed class WhiteAlbumSetting
     // ==================== pvp ====================
 
     /// <summary>是否开启决斗。</summary>
-    public bool Enabled { get; set; }
+    public bool Enabled { get; set; } = true;
     
     /// <summary>是否生成「对决邀请」事件。</summary>
     public bool EventEnabled { get; set; } = true;

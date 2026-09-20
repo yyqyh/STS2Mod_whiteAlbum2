@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Nodes.Combat;
-using STS2_WhiteAlbum2.Core.Pvp;
+using STS2_WhiteAlbum2.Core.Combat.Duel;
 using STS2_WhiteAlbum2.Core.Settings;
 using System.Reflection;
 using System.Threading.Tasks;

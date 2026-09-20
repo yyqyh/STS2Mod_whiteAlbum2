@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Logging;
 using STS2_WhiteAlbum2.Core.Settings;
 
-namespace STS2_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Combat.Duel;
 
 /// <summary>决斗运行时状态：状态、回合顺序、回合桥接、回合上限</summary>
 

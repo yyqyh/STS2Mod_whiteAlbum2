@@ -8,7 +8,9 @@ using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 
 using STS2_WhiteAlbum2.Core.Character;
 using STS2_WhiteAlbum2.Core.Settings;
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Utils;
+
+
 
 namespace STS2_WhiteAlbum2.Core.Patches.Together;
 

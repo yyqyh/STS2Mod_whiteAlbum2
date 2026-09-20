@@ -6,7 +6,10 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Runs;
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Combat.Together;
+using STS2_WhiteAlbum2.Core.Utils;
+
+
 
 namespace STS2_WhiteAlbum2.Core.Patches.Together.Deck;
 

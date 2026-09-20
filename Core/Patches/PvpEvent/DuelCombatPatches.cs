@@ -17,7 +17,7 @@ using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Runs;
-using STS2_WhiteAlbum2.Core.Pvp;
+using STS2_WhiteAlbum2.Core.Combat.Duel;
 using STS2_WhiteAlbum2.Core.Settings;
 using System.Reflection;
 using System.Threading.Tasks;

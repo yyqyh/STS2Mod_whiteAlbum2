@@ -5,18 +5,26 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 
-namespace STS2_WhiteAlbum2.Core.Character;
+using STS2RitsuLib.Scaffolding.Content.Patches;
+using STS2_WhiteAlbum2.Core.Potions;
+using STS2_WhiteAlbum2.Core.Relics;
 
-/// <summary>Setsuna 的卡池 / 遗物池 / 药水池。</summary>
-public sealed class SetsunaCardPool : CardPoolModel
+namespace STS2_WhiteAlbum2.Core.Character.Setsuna;
+
+/// <summary>Setsuna 的卡池：并入本体静默猎手整套卡兜底，能量图标用自己的。</summary>
+public sealed class SetsunaCardPool : CardPoolModel, IModBigEnergyIconPool, IModTextEnergyIconPool
 {
     public override string Title => "setsuna";
 
-    public override string EnergyColorName => Const.HunterSourceId;
+    public override string EnergyColorName => Const.EnergyColorNameSetsuna;
+
+    public string? BigEnergyIconPath => Const.Paths.SetsunaBigEnergyIcon;
+
+    public string? TextEnergyIconPath => Const.Paths.SetsunaTextEnergyIcon;
 
     public override string CardFrameMaterialPath => "card_frame_green";
 
-    public override Color DeckEntryCardColor => new("D96A8A");
+    public override Color DeckEntryCardColor => new("028080");
 
     public override Color EnergyOutlineColor => new("8A2E4A");
 
@@ -24,33 +32,36 @@ public sealed class SetsunaCardPool : CardPoolModel
 
     protected override CardModel[] GenerateAllCards() =>
     [
-        ModelDb.Card<Cards.SetsunaCardOne>(),
-        ModelDb.Card<Cards.SetsunaCardTwo>(),
-        ModelDb.Card<Cards.SetsunaCardThree>(),
-        ModelDb.Card<Cards.SetsunaCardFour>(),
-        ModelDb.Card<Cards.SetsunaCardFive>(),
         ..ModelDb.CardPool<SilentCardPool>().AllCards,
     ];
 }
 
 /// <summary>Setsuna 的遗物池。</summary>
-public sealed class SetsunaRelicPool : RelicPoolModel
+public sealed class SetsunaRelicPool : RelicPoolModel, IModBigEnergyIconPool, IModTextEnergyIconPool
 {
-    public override string EnergyColorName => Const.HunterSourceId;
+    public override string EnergyColorName => Const.EnergyColorNameSetsuna;
+
+    public string? BigEnergyIconPath => Const.Paths.SetsunaBigEnergyIcon;
+
+    public string? TextEnergyIconPath => Const.Paths.SetsunaTextEnergyIcon;
 
     protected override IEnumerable<RelicModel> GenerateAllRelics() =>
     [
-        ModelDb.Relic<Relics.AlbumRelicOne>(),
-        ModelDb.Relic<Relics.AlbumRelicTwo>(),
-        ModelDb.Relic<Relics.AlbumRelicThree>(),
+        ModelDb.Relic<AlbumRelicOne>(),
+        ModelDb.Relic<AlbumRelicTwo>(),
+        ModelDb.Relic<AlbumRelicThree>(),
     ];
 }
 
 /// <summary>Setsuna 的药水池。</summary>
-public sealed class SetsunaPotionPool : PotionPoolModel
+public sealed class SetsunaPotionPool : PotionPoolModel, IModBigEnergyIconPool, IModTextEnergyIconPool
 {
-    public override string EnergyColorName => Const.HunterSourceId;
+    public override string EnergyColorName => Const.EnergyColorNameSetsuna;
+
+    public string? BigEnergyIconPath => Const.Paths.SetsunaBigEnergyIcon;
+
+    public string? TextEnergyIconPath => Const.Paths.SetsunaTextEnergyIcon;
 
     protected override IEnumerable<PotionModel> GenerateAllPotions() =>
-        [ModelDb.Potion<Potions.AlbumPotionOne>()];
+        [ModelDb.Potion<AlbumPotionOne>()];
 }

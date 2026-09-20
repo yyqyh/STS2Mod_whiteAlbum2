@@ -10,8 +10,9 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using STS2_WhiteAlbum2.Core.Settings;
 using System.Runtime.CompilerServices;
+using STS2_WhiteAlbum2.Core.Utils;
 
-namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Combat.Together;
 
 /// <summary>共生体镜像：身体/金币/能力的镜像与对应补丁</summary>
 internal static class TogetherMirrorPatches

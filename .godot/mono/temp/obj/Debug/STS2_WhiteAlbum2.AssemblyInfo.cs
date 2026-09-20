@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STS2_WhiteAlbum2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75d8bc0a2f4db39600894afcd1ab385edaf692e2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84e14ca1ffe1d096d6529c76e92562b645392072")]
 [assembly: System.Reflection.AssemblyProductAttribute("STS2_WhiteAlbum2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STS2_WhiteAlbum2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

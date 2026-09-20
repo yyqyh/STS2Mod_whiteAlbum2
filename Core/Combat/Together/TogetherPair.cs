@@ -10,8 +10,10 @@ using MegaCrit.Sts2.Core.Runs;
 using STS2_WhiteAlbum2.Core.Character;
 using STS2_WhiteAlbum2.Core.Settings;
 using STS2_WhiteAlbum2.Core.Patches.Together.Deck;
+using STS2_WhiteAlbum2.Core.Utils;
+using STS2_WhiteAlbum2.Core.Content;
 
-namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Combat.Together;
 
 /// <summary>
 /// 共生体的「成员注册表」：谁是锚点、谁是回声。

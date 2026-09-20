@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 
-namespace STS2_WhiteAlbum2.Core.Character;
+namespace STS2_WhiteAlbum2.Core.Character.Touma;
 
 /// <summary>
 /// 角色：<b>冬马（Touma）</b>。
@@ -33,6 +33,8 @@ public sealed class Touma : ModCharacterTemplate<ToumaCardPool, ToumaRelicPool, 
 
     /// <summary>静态占位美术：选人立绘、顶栏图标、地图标记。</summary>
     public override CharacterAssetProfile AssetProfile => new(
+        Scenes: new CharacterSceneAssetSet(
+            EnergyCounterPath: "res://STS2_WhiteAlbum2/scenes/ui/energy_counters/touma_energy_counter.tscn"),
         Ui: new CharacterUiAssetSet(
             IconTexturePath: AlbumCharacterArt.ToumaTopIcon,
             IconOutlineTexturePath: AlbumCharacterArt.ToumaTopIconOutline,

@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Runs;
 using STS2_WhiteAlbum2.Core.Settings;
 using STS2_WhiteAlbum2.Core.Patches.PvpEvent;
 
-namespace STS2_WhiteAlbum2.Core.Pvp;
+namespace STS2_WhiteAlbum2.Core.Combat.Duel;
 
 /// <summary>
 /// 决斗模式的战斗改造：清掉怪物，把第二名玩家挪到敌方侧。
@@ -50,47 +50,7 @@ internal static class DuelMode
     private static readonly AccessTools.FieldRef<CombatState, List<Creature>> EnemiesField =
         AccessTools.FieldRefAccess<CombatState, List<Creature>>("_enemies");
 
-    /// <summary>
-    /// 在敌方侧放一只"绝对不还手"的训练假人。
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// 用本体的 <c>BattleFriendV1</c>：它的移动表里只有 <c>NOTHING_MOVE</c>（什么都不做），
-    /// 75 点生命，正是"站着挨打"的靶子。
-    /// </para>
-    /// <para>
-    /// 为什么要它：本体的回合循环在"敌方侧空着"时行为很怪 ——
-    /// 实测会出现"对手的回合开始了、但没人给他跑回合开场（没费没牌）"。
-    /// 有个哑巴敌人站着，敌方回合就有正常的宿主，<c>ExecuteEnemyTurn</c> 也能按部就班地跑完。
-    /// </para>
-    /// <para>
-    /// 直接往 <c>_enemies</c> 里加，是因为 <c>AddCreature</c> 被我们的"决斗不放怪物进来"补丁拦着；
-    /// creature 本身仍然走 <c>CreateCreature</c> 正常创建（CombatState、CombatId 都会挂好）。
-    /// </para>
-    /// </remarks>
-    private static void SpawnDummy(CombatState state)
-    {
-        try
-        {
-            if (state.Enemies.Any(creature => creature?.Monster is BattleFriendV1))
-            {
-                return;
-            }
 
-            var dummy = state.CreateCreature(
-                ModelDb.Monster<BattleFriendV1>().ToMutable(),
-                CombatSide.Enemy,
-                null);
-
-            EnemiesField(state).Add(dummy);
-
-            Log.Info("[STS2_WhiteAlbum2] 已在敌方侧放置训练假人（不还手，避免敌方回合空转）");
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"[STS2_WhiteAlbum2] 放置训练假人失败：{ex}");
-        }
-    }
 
     private static CombatState? _announced;
 
@@ -213,7 +173,7 @@ internal static class DuelMode
         }
     }
 
-    /// <summary>纯玩家对决：把敌方侧的怪物全部摘掉（它们不会再被瞄准、也不再行动）。</summary>
+    /// <summary>纯玩家对决：把敌方侧的怪物全部摘掉 （它们不会再被瞄准、也不再行动）。</summary>
     private static void RemoveMonsters(CombatState state)
     {
         foreach (var creature in state.Enemies.ToList())
@@ -235,50 +195,6 @@ internal static class DuelMode
         }
     }
 
-    /// <summary>
-    /// 把对手挪到敌方侧（改 Side → 摘除 → 加回）。
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// 这一步<b>不能省</b>：卡牌的"能打谁"来自 <c>CombatState.Enemies</c>，
-    /// 战斗 UI 也按 <c>Creature.Side</c> 决定把谁画在对面。两人都留在我方侧时，
-    /// 结果是"打不到对方、立绘也不换位置"（实测）。
-    /// </para>
-    /// <para>
-    /// 挪过去之后，对手依然是一个正常的 <c>Player</c>（<c>CombatState.Players</c>
-    /// 是从 allies + enemies 两侧一起收集玩家的），所以<b>轮流行动那套完全不受影响</b>；
-    /// 而它作为"敌方单位"会被 <c>ExecuteEnemyTurn</c> 遍历到 —— 那几条怪物专属路径
-    /// （TakeTurn / AfterAddedToRoom / RollMove）由 DuelEnemyTurnGuardPatch 跳过。
-    /// </para>
-    /// <para>顺序必须是：改 Side → RemoveCreature → AddCreature（AddCreature 按 Side 分派）。</para>
-    /// </remarks>
-    private static void MoveOpponentToEnemySide(CombatState state)
-    {
-        if (state.Players.Count != 2)
-        {
-            return;
-        }
-
-        var opponent = state.Players[1].Creature;
-
-        if (opponent.Side == CombatSide.Enemy)
-        {
-            return;
-        }
-
-        try
-        {
-            state.RemoveCreature(opponent, unattach: false);
-            SideField(opponent) = CombatSide.Enemy;
-            state.AddCreature(opponent);
-
-            Log.Info($"[STS2_WhiteAlbum2] 对手 netId={state.Players[1].NetId} 已移到敌方侧（立绘与目标选择都跟着对）");
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"[STS2_WhiteAlbum2] 移动对手到敌方侧失败：{ex}");
-        }
-    }
 
     /// <summary>
     /// 结束这场决斗（走本体的跑局结算）。

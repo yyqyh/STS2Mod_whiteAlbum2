@@ -8,7 +8,10 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Combat.Together;
+using STS2_WhiteAlbum2.Core.Utils;
+
+
 
 namespace STS2_WhiteAlbum2.Core.Patches.Together.Deck;
 

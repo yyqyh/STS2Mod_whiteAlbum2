@@ -8,13 +8,13 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Nodes.Combat;
-using MegaCrit.Sts2.Core.Nodes.TopBar;
+
+using STS2_WhiteAlbum2.Core.Combat.Together;
+using STS2_WhiteAlbum2.Core.Utils;
+
 using MegaCrit.Sts2.Core.Runs;
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 using System.Reflection.Emit;
 

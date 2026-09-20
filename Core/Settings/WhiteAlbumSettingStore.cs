@@ -1,7 +1,7 @@
 using STS2RitsuLib;
 using STS2RitsuLib.Utils.Persistence;
 
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Combat.Together;
 
 namespace STS2_WhiteAlbum2.Core.Settings;
 

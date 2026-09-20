@@ -2,7 +2,7 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
-namespace STS2_WhiteAlbum2.Core.Ancients;
+namespace STS2_WhiteAlbum2.Core.Relics;
 
 /// <summary>
 /// 空白先古遗物：只占位，不带任何效果。

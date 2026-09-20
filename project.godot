@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="STS2_WhiteAlbum2"
+run/main_scene="res://STS2_WhiteAlbum2/ui/energy_counters/setsuna_energy_counter.tscn"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
 

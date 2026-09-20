@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 using MegaCrit.Sts2.Core.Runs;
 
 using STS2_WhiteAlbum2.Core.Settings;
+using ToumaCharacter = STS2_WhiteAlbum2.Core.Character.Touma.Touma;
+using SetsunaCharacter = STS2_WhiteAlbum2.Core.Character.Setsuna.Setsuna;
 
 namespace STS2_WhiteAlbum2.Core.Character;
 
@@ -25,7 +27,7 @@ internal static class AlbumCharacterRules
     /// <summary>这个角色是不是本 mod 的两个人之一。</summary>
     public static bool IsAlbumCharacter(CharacterModel? character)
     {
-        return character is Setsuna or Touma;
+        return character is SetsunaCharacter or ToumaCharacter;
     }
 
     /// <summary>当前大厅是不是“开启了 together 的联机局”。</summary>

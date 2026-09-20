@@ -3,6 +3,8 @@ using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Character.Setsuna;
+using STS2_WhiteAlbum2.Core.Character.Touma;
 
 namespace STS2_WhiteAlbum2.Core.Relics;
 

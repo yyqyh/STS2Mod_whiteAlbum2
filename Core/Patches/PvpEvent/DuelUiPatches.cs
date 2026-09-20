@@ -2,7 +2,7 @@ using HarmonyLib;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.Combat;
-using STS2_WhiteAlbum2.Core.Pvp;
+using STS2_WhiteAlbum2.Core.Combat.Duel;
 using STS2_WhiteAlbum2.Core.Settings;
 
 namespace STS2_WhiteAlbum2.Core.Patches.PvpEvent;

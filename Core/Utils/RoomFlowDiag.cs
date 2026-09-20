@@ -1,22 +1,16 @@
 using System.Reflection;
-
 using Godot;
-
 using HarmonyLib;
-
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Nodes;
-using MegaCrit.Sts2.Core.Nodes.Screens.Capstones;
 using MegaCrit.Sts2.Core.Nodes.Screens;
 using MegaCrit.Sts2.Core.Runs;
-using STS2_WhiteAlbum2.Core.Patches.Together;
+using STS2_WhiteAlbum2.Core.Content;
 
-namespace STS2_WhiteAlbum2.Core.Together.Multiplayer;
+namespace STS2_WhiteAlbum2.Core.Utils;
 
 /// <summary>
 /// 房间流程的"里程碑"日志（默认开着，每个点最多 30 条）。

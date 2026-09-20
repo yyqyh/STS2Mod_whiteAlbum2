@@ -8,8 +8,9 @@ using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Rooms;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2_WhiteAlbum2.Core.Content;
 
-namespace STS2_WhiteAlbum2.Core.Ancients;
+namespace STS2_WhiteAlbum2.Core.Combat;
 
 /// <summary>
 /// 占位 boss：<b>100 血，只会一招"攻击 1"</b>，形象借本体已有的怪物。

@@ -1,7 +1,7 @@
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Models;
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Combat.Together;
 using System.Runtime.CompilerServices;
 
 namespace STS2_WhiteAlbum2.Core.Patches.Together.Combat;

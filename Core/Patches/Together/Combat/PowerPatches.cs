@@ -4,9 +4,10 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Enchantments;
 using MegaCrit.Sts2.Core.Models.Powers;
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+using STS2_WhiteAlbum2.Core.Combat.Together;
+using STS2_WhiteAlbum2.Core.Utils;
+
 
 namespace STS2_WhiteAlbum2.Core.Patches.Together.Combat;
 

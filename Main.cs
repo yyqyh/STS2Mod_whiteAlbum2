@@ -8,14 +8,15 @@ using STS2RitsuLib;
 using STS2RitsuLib.Content;
 using STS2RitsuLib.Interop;
 
-using STS2_WhiteAlbum2.Core.Ancients;
-using STS2_WhiteAlbum2.Core.Cards;
-using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Character.Setsuna;
+using STS2_WhiteAlbum2.Core.Character.Touma;
 using STS2_WhiteAlbum2.Core.Potions;
-using STS2_WhiteAlbum2.Core.Pvp;
 using STS2_WhiteAlbum2.Core.Relics;
 using STS2_WhiteAlbum2.Core.Settings;
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Content;
+
+using SetsunaCharacter = STS2_WhiteAlbum2.Core.Character.Setsuna.Setsuna;
+using ToumaCharacter = STS2_WhiteAlbum2.Core.Character.Touma.Touma;
 
 namespace STS2_WhiteAlbum2;
 
@@ -118,11 +119,7 @@ public static class Main
 
     private static Type[] ContentTypes =>
     [
-        typeof(Setsuna), typeof(Touma),
-        typeof(SetsunaCardOne), typeof(SetsunaCardTwo), typeof(SetsunaCardThree),
-        typeof(SetsunaCardFour), typeof(SetsunaCardFive),
-        typeof(ToumaCardOne), typeof(ToumaCardTwo), typeof(ToumaCardThree),
-        typeof(ToumaCardFour), typeof(ToumaCardFive),
+        typeof(SetsunaCharacter), typeof(ToumaCharacter),
         typeof(AlbumRelicOne), typeof(AlbumRelicTwo), typeof(AlbumRelicThree),
         typeof(AlbumPotionOne),
         typeof(SetsunaCardPool), typeof(SetsunaRelicPool), typeof(SetsunaPotionPool),

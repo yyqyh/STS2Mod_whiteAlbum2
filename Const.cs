@@ -18,10 +18,28 @@ internal static class Const
     public const string Version = "0.1.0";
 
     /// <summary>卡池用的能量颜色标识。</summary>
-    public const string EnergyColorName = "Together";
+    public const string EnergyColorNameSetsuna = "SetsunaEnergyColor";
+    public const string EnergyColorNameTouma = "ToumaEnergyColor";
+
 
     /// <summary>两个角色共用的资源来源：本体静默猎手（"猎人"）。</summary>
     public const string HunterSourceId = "silent";
+
+    public static class Paths
+    {
+        public const string Root = "res://STS2_WhiteAlbum2";
+        public const string ScenesRoot = Root + "/scenes";
+        
+        
+        public const string SetsunaBigEnergyIcon = Root + "/images/character/setsuna/energy_icon_big.png";
+        public const string SetsunaTextEnergyIcon = Root + "/images/character/setsuna/energy_icon.png";
+        public const string ToumaBigEnergyIcon = Root + "/images/character/touma/energy_icon_big.png";
+        public const string ToumaTextEnergyIcon = Root + "/images/character/touma/energy_icon.png";
+
+        
+    }
+
+
 
     /// <summary>惰性创建的日志器，前缀就是模组 id。</summary>
     public static Logger Logger

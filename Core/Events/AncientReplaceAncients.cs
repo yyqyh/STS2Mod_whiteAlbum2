@@ -2,8 +2,10 @@ using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Models.Acts;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2_WhiteAlbum2.Core.Content;
+using STS2_WhiteAlbum2.Core.Relics;
 
-namespace STS2_WhiteAlbum2.Core.Ancients;
+namespace STS2_WhiteAlbum2.Core.Events;
 
 /// <summary>
 /// 占位先古之民：每个给 3 个空白先古遗物，别的一概不做。

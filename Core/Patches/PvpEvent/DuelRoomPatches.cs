@@ -1,5 +1,4 @@
 using HarmonyLib;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Map;
@@ -7,9 +6,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
-using STS2_WhiteAlbum2.Core.Pvp;
+using STS2_WhiteAlbum2.Core.Events;
 using STS2_WhiteAlbum2.Core.Settings;
-using System.Threading.Tasks;
 
 namespace STS2_WhiteAlbum2.Core.Patches.PvpEvent;
 

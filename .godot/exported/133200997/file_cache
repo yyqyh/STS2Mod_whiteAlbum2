@@ -1,2 +1,4 @@
 res://STS2_WhiteAlbum2/scenes/char_select/select_bg_setsuna.tscn::996394419c82a6a0feb93657a741e19e::1789737494::res://.godot/exported/133200997/export-7c796f05b07d0f2ae7e33febaf1d1b3d-select_bg_setsuna.scn
 res://STS2_WhiteAlbum2/scenes/char_select/select_bg_touma.tscn::7f1d0b95cba246ab1588f8f034a69788::1789737495::res://.godot/exported/133200997/export-5abf5372ab938a97fc7298446d9b9e4a-select_bg_touma.scn
+res://STS2_WhiteAlbum2/scenes/ui/energy_counters/setsuna_energy_counter.tscn::f01414f532217f07d5279f8c58d55ae5::1789900594::res://.godot/exported/133200997/export-660d38525cf3b0d1a6bee465440bdc0b-setsuna_energy_counter.scn
+res://STS2_WhiteAlbum2/scenes/ui/energy_counters/touma_energy_counter.tscn::cbec39d204bf68204ffc0628aeccee08::1789894944::res://.godot/exported/133200997/export-6361d89dbffe85670930d6c7f1922b85-touma_energy_counter.scn

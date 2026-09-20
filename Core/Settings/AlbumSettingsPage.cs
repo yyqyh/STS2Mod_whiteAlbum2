@@ -1,12 +1,9 @@
 using System.Globalization;
-
 using MegaCrit.Sts2.Core.Runs;
-
 using STS2RitsuLib;
 using STS2RitsuLib.Settings;
 using STS2RitsuLib.Utils.Persistence;
-
-using STS2_WhiteAlbum2.Core.Together.Multiplayer;
+using STS2_WhiteAlbum2.Core.Content;
 
 namespace STS2_WhiteAlbum2.Core.Settings;
 
@@ -154,10 +151,10 @@ internal static class AlbumSettingsPage
             page.AddSection("together", section =>
             {
                 section
-                    .WithTitle(ModSettingsText.Literal("Together · 共生体"))
+                    .WithTitle(ModSettingsText.Literal("Together"))
                     .AddToggle(
                         "symbiosis_enabled",
-                        ModSettingsText.Literal("开启共生体"),
+                        ModSettingsText.Literal("开启Together"),
                         symbiosisBinding,
                         ModSettingsText.Dynamic(DescribeSymbiosis))
                     .AddToggle(
@@ -165,10 +162,10 @@ internal static class AlbumSettingsPage
                         ModSettingsText.Literal("开局合并双方初始卡组（共享卡组 = p1 + p2）"),
                         mergeBinding,
                         ModSettingsText.Literal(
-                            "开启：开局时把另一位玩家（回声 / p2）的初始卡组【复制】进共享卡组，"
-                            + "共生体的卡组就是两个人的牌合在一起。\n"
-                            + "关闭：共享卡组只包含锚点（p1，先确定那位）的初始卡组，回声那副不参与。\n"
-                            + "注意：因为是复制，两人选同一个角色时开启它会得到两份初始卡（两个静默猎手 = 24 张）；"
+                            "开启：开局时把p2的初始卡组【复制】进共享卡组，"
+                            + "卡组就是两个人的牌合在一起。\n"
+                            + "关闭：共享卡组只包含锚点p1的初始卡组，回声那副不参与。\n"
+                            + "注意：因为是复制，两人选同一个角色时开启它会得到两份初始卡（两个静默猎手 = 24/+1 张）；"
                             + "想要「同角色只要一份」就把它关掉。"))
                     .AddString(
                         "hp_bonus_percent",
@@ -177,7 +174,7 @@ internal static class AlbumSettingsPage
                         placeholder: ModSettingsText.Literal("例如 50"),
                         maxLength: 3,
                         description: ModSettingsText.Literal(
-                            "把「回声（p2）最大生命」的百分之几加进共享血池：0 = 不加，100 = 把 p2 那一整份也加上。\n"
+                            "把p2的百分之几加进共享血池：0 = 不加，100 = 把 p2 那一整份也加上。\n"
                             + "只在新开一局时生效一次（上限会写进存档，读档/重连不会重复加）。\n"
                             + "只填 0~100 的整数；填别的会被忽略并保留原值。"),
                         valueValidationVisual: IsValidPercent)
@@ -186,7 +183,7 @@ internal static class AlbumSettingsPage
                         ModSettingsText.Literal("共享金币（组内一个钱包）"),
                         shareGoldBinding,
                         ModSettingsText.Literal(
-                            "开启：共生体成员共用一个金币余额 —— 谁捡到金币、谁在商店花掉，都是改同一份余额。\n"
+                            "开启：成员共用一个金币余额 —— 谁捡到金币、谁在商店花掉，都是改同一份余额。\n"
                             + "开局取组内最大值作为共同余额（只在开新局时对齐一次，读档/重连不会重复加）；关闭时各花各的。\n"
                             + "联机时以主机设置为准。"))
                     .AddParagraph(
