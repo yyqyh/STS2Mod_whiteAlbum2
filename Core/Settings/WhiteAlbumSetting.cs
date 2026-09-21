@@ -23,6 +23,15 @@ public sealed class WhiteAlbumSetting
     /// <summary>是否共享金币。</summary>
     public bool ShareGold { get; set; } = true;
 
+    /// <summary>是否把原版事件改成共享事件（两人投票，只有一次选择）。</summary>
+    /// <remarks>
+    /// <para>背景：联机时每个玩家各有一份事件实例，而共生体共用一副卡组 —— 两个人可能同时对同一张牌选附魔/移除/升级。</para>
+    /// <para>开启：非共享事件按共享事件处理，两人投票、只有一个选择，从根上消除并发。</para>
+    /// <para>代价：事件奖励由"每人一份"变成"整组一份"；共享事件结束时不再发校验和。</para>
+    /// <para>不开也能用：默认会在共享卡组变动时刷新另一个人的选牌界面，并在应用前拦掉失效的选择（见 Deck/CardOwnershipPatches.cs）。</para>
+    /// </remarks>
+    public bool ShareEvents { get; set; }
+
     /// <summary>共生体存档登记：种子 → 成员 netId（逗号分隔）。</summary>
     public Dictionary<string, string> SymbioticRuns { get; set; } = [];
 

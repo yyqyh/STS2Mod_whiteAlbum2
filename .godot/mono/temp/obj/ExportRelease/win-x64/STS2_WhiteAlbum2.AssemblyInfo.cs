@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STS2_WhiteAlbum2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("ExportRelease")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84e14ca1ffe1d096d6529c76e92562b645392072")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f93537c9b05fc22bfbaa6f86d31f62a2b8a7b8af")]
 [assembly: System.Reflection.AssemblyProductAttribute("STS2_WhiteAlbum2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STS2_WhiteAlbum2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
