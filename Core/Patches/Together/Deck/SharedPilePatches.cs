@@ -12,6 +12,8 @@ using MegaCrit.Sts2.Core.Runs;
 using STS2_WhiteAlbum2.Core.Combat.Together;
 using STS2_WhiteAlbum2.Core.Utils;
 
+using System.Reflection;
+
 namespace STS2_WhiteAlbum2.Core.Patches.Together.Deck;
 
 /// <summary>共享牌堆：重定向、锚点、开局激活、洗牌确定性、进阶之灾去重</summary>
@@ -57,21 +59,7 @@ internal static class SharedPilePatches
         if (TogetherPair.Anchor is { } anchor)
         {
             __result = anchor.Deck;
-            LogDeckRedirect(anchor);
         }
-    }
-
-    private static int _logged;
-
-    /// <summary>临时诊断：确认卡组重定向真的执行了（前几次）。</summary>
-    private static void LogDeckRedirect(Player anchor)
-    {
-        if (System.Threading.Interlocked.Increment(ref _logged) > 5)
-        {
-            return;
-        }
-
-        SelfCheck.Write($"[together][diag] 设置回声 Deck → 锚点卡组({anchor.Deck.Cards.Count} 张)");
     }
 
     /// <summary>进战斗时只让锚点填充战斗牌堆。</summary>
@@ -505,34 +493,21 @@ internal static class RandomPickOrder
 
 /// <summary>加牌之后归一顺序（弃牌堆 / 主卡组）。</summary>
 [HarmonyPatch(typeof(CardPile), nameof(CardPile.AddInternal))]
-internal static class PileOrderNormalizeOnAddPatch
+/// <summary>堆变动（加牌 / 移到堆顶 / 移到堆底）之后归一顺序。</summary>
+[HarmonyPatch]
+internal static class PileOrderNormalizePatch
 {
-    [HarmonyPostfix]
-    private static void Postfix(CardPile __instance, CardModel card)
+    private static IEnumerable<MethodBase> TargetMethods()
     {
-        RandomPickOrder.NormalizeOrderFreePile(__instance, card.Owner, "加牌");
+        yield return AccessTools.Method(typeof(CardPile), nameof(CardPile.AddInternal));
+        yield return AccessTools.Method(typeof(CardPile), nameof(CardPile.MoveToTopInternal));
+        yield return AccessTools.Method(typeof(CardPile), nameof(CardPile.MoveToBottomInternal));
     }
-}
 
-/// <summary>把牌移到堆顶之后归一顺序。</summary>
-[HarmonyPatch(typeof(CardPile), nameof(CardPile.MoveToTopInternal))]
-internal static class PileOrderNormalizeOnMoveTopPatch
-{
     [HarmonyPostfix]
-    private static void Postfix(CardPile __instance, CardModel card)
+    private static void Postfix(CardPile __instance, CardModel card, MethodBase __originalMethod)
     {
-        RandomPickOrder.NormalizeOrderFreePile(__instance, card.Owner, "移到堆顶");
-    }
-}
-
-/// <summary>把牌移到堆底之后归一顺序。</summary>
-[HarmonyPatch(typeof(CardPile), nameof(CardPile.MoveToBottomInternal))]
-internal static class PileOrderNormalizeOnMoveBottomPatch
-{
-    [HarmonyPostfix]
-    private static void Postfix(CardPile __instance, CardModel card)
-    {
-        RandomPickOrder.NormalizeOrderFreePile(__instance, card.Owner, "移到堆底");
+        RandomPickOrder.NormalizeOrderFreePile(__instance, card.Owner, __originalMethod.Name);
     }
 }
 

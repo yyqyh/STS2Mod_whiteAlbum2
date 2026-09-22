@@ -44,9 +44,6 @@ internal static class WhiteAlbumSettingStore
     /// <summary>本机设置的"共生体人数上限"（夹到 2~4）。</summary>
     public static int GroupSize => Math.Clamp(Current.GroupSize, TogetherPair.MinMembers, TogetherPair.MaxMembers);
 
-    /// <summary>本机设置的"事件是否改成共享事件"。</summary>
-    public static bool ShareEvents => Current.ShareEvents;
-
     /// <summary>本机设置的"是否共享金币"。</summary>
     public static bool ShareGold => Current.ShareGold;
 

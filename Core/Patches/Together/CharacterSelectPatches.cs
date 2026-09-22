@@ -12,6 +12,8 @@ using STS2_WhiteAlbum2.Core.Utils;
 
 
 
+using System.Reflection;
+
 namespace STS2_WhiteAlbum2.Core.Patches.Together;
 
 /// <summary>
@@ -134,22 +136,25 @@ internal static class CharacterSelectGateImpl
 
 /// <summary>打开选人界面时应用 mod 角色可见性。</summary>
 [HarmonyPatch(typeof(NCharacterSelectScreen), "OnSubmenuOpened")]
-internal static class CharacterSelectOpenedPatch
+/// <summary>选人界面：打开时应用 mod 角色可见性，关闭时回收缓存。</summary>
+[HarmonyPatch]
+internal static class CharacterSelectPatches
 {
-    [HarmonyPostfix]
-    private static void Postfix(NCharacterSelectScreen __instance)
+    private static IEnumerable<MethodBase> TargetMethods()
     {
-        CharacterSelectGateImpl.OnOpened(__instance);
+        yield return AccessTools.Method(typeof(NCharacterSelectScreen), "OnSubmenuOpened");
+        yield return AccessTools.Method(typeof(NCharacterSelectScreen), "OnSubmenuClosed");
     }
-}
 
-/// <summary>关闭选人界面时清理缓存。</summary>
-[HarmonyPatch(typeof(NCharacterSelectScreen), "OnSubmenuClosed")]
-internal static class CharacterSelectClosedPatch
-{
     [HarmonyPostfix]
-    private static void Postfix(NCharacterSelectScreen __instance)
+    private static void Postfix(NCharacterSelectScreen __instance, MethodBase __originalMethod)
     {
+        if (__originalMethod.Name == "OnSubmenuOpened")
+        {
+            CharacterSelectGateImpl.OnOpened(__instance);
+            return;
+        }
+
         CharacterSelectGateImpl.OnClosed(__instance);
     }
 }

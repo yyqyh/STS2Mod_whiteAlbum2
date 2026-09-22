@@ -9,6 +9,10 @@ using STS2_WhiteAlbum2.Core.Combat.Together;
 using STS2_WhiteAlbum2.Core.Utils;
 
 
+using System.Reflection;
+
+using System.Threading.Tasks;
+
 namespace STS2_WhiteAlbum2.Core.Patches.Together.Combat;
 
 /// <summary>注能（<c>Imbued</c>）：共生体下"每场战斗开始时自动打出"只能发生一次。</summary>
@@ -78,108 +82,23 @@ internal static class ImbuedOncePerCombatPatch
 }
 
 /// <summary>"会改身体数值"的回合末能力：只由<b>原件</b>结算一次，镜像副本不重复结算。</summary>
-internal static class MirroredTemporaryPowerGuard
+[HarmonyPatch]
+internal static class MirroredPowerSingleFirePatch
 {
-    /// <summary>这份能力是不是"不该再自己跑一次"的镜像副本。</summary>
-    public static bool ShouldSkip(PowerModel power)
+    private static IEnumerable<MethodBase> TargetMethods()
     {
-        return TogetherPair.IsActive && PowerMirror.IsMirrorCopy(power);
+        yield return AccessTools.Method(typeof(TemporaryStrengthPower), nameof(TemporaryStrengthPower.AfterSideTurnEnd));
+        yield return AccessTools.Method(typeof(TemporaryDexterityPower), nameof(TemporaryDexterityPower.AfterSideTurnEnd));
+        yield return AccessTools.Method(typeof(TemporaryFocusPower), nameof(TemporaryFocusPower.AfterSideTurnEnd));
+        yield return AccessTools.Method(typeof(WeakPower), nameof(WeakPower.AfterSideTurnEnd));
+        yield return AccessTools.Method(typeof(VulnerablePower), nameof(VulnerablePower.AfterSideTurnEnd));
+        yield return AccessTools.Method(typeof(FrailPower), nameof(FrailPower.AfterSideTurnEnd));
     }
-}
 
-/// <summary>临时力量（含药剂/卡牌派生的一堆子类）回合末只收回一次。</summary>
-[HarmonyPatch(typeof(TemporaryStrengthPower), nameof(TemporaryStrengthPower.AfterSideTurnEnd))]
-internal static class TemporaryStrengthSingleFirePatch
-{
     [HarmonyPrefix]
-    private static bool Prefix(TemporaryStrengthPower __instance, ref Task __result)
+    private static bool Prefix(PowerModel __instance, ref Task __result)
     {
-        if (!MirroredTemporaryPowerGuard.ShouldSkip(__instance))
-        {
-            return true;
-        }
-
-        __result = Task.CompletedTask;
-        return false;
-    }
-}
-
-/// <summary>临时敏捷（Fade / Anticipate / SpeedPotion 等）回合末只收回一次。</summary>
-[HarmonyPatch(typeof(TemporaryDexterityPower), nameof(TemporaryDexterityPower.AfterSideTurnEnd))]
-internal static class TemporaryDexteritySingleFirePatch
-{
-    [HarmonyPrefix]
-    private static bool Prefix(TemporaryDexterityPower __instance, ref Task __result)
-    {
-        if (!MirroredTemporaryPowerGuard.ShouldSkip(__instance))
-        {
-            return true;
-        }
-
-        __result = Task.CompletedTask;
-        return false;
-    }
-}
-
-/// <summary>临时集中（Hotfix 等）回合末只收回一次。</summary>
-[HarmonyPatch(typeof(TemporaryFocusPower), nameof(TemporaryFocusPower.AfterSideTurnEnd))]
-internal static class TemporaryFocusSingleFirePatch
-{
-    [HarmonyPrefix]
-    private static bool Prefix(TemporaryFocusPower __instance, ref Task __result)
-    {
-        if (!MirroredTemporaryPowerGuard.ShouldSkip(__instance))
-        {
-            return true;
-        }
-
-        __result = Task.CompletedTask;
-        return false;
-    }
-}
-
-/// <summary>虚弱：敌方回合结束时只减一层（镜像副本不重复减）。</summary>
-[HarmonyPatch(typeof(WeakPower), nameof(WeakPower.AfterSideTurnEnd))]
-internal static class WeakSingleFirePatch
-{
-    [HarmonyPrefix]
-    private static bool Prefix(WeakPower __instance, ref Task __result)
-    {
-        if (!MirroredTemporaryPowerGuard.ShouldSkip(__instance))
-        {
-            return true;
-        }
-
-        __result = Task.CompletedTask;
-        return false;
-    }
-}
-
-/// <summary>易伤：同上。</summary>
-[HarmonyPatch(typeof(VulnerablePower), nameof(VulnerablePower.AfterSideTurnEnd))]
-internal static class VulnerableSingleFirePatch
-{
-    [HarmonyPrefix]
-    private static bool Prefix(VulnerablePower __instance, ref Task __result)
-    {
-        if (!MirroredTemporaryPowerGuard.ShouldSkip(__instance))
-        {
-            return true;
-        }
-
-        __result = Task.CompletedTask;
-        return false;
-    }
-}
-
-/// <summary>脆弱：同上。</summary>
-[HarmonyPatch(typeof(FrailPower), nameof(FrailPower.AfterSideTurnEnd))]
-internal static class FrailSingleFirePatch
-{
-    [HarmonyPrefix]
-    private static bool Prefix(FrailPower __instance, ref Task __result)
-    {
-        if (!MirroredTemporaryPowerGuard.ShouldSkip(__instance))
+        if (!TogetherPair.IsActive || !PowerMirror.IsMirrorCopy(__instance))
         {
             return true;
         }
