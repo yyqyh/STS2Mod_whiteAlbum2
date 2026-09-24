@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 using MegaCrit.Sts2.Core.Runs;
 
+using STS2_WhiteAlbum2.Core.Interop;
 using STS2_WhiteAlbum2.Core.Settings;
 using ToumaCharacter = STS2_WhiteAlbum2.Core.Character.Touma.Touma;
 using SetsunaCharacter = STS2_WhiteAlbum2.Core.Character.Setsuna.Setsuna;
@@ -35,7 +36,7 @@ internal static class AlbumCharacterRules
     {
         return lobby is not null
                && lobby.NetService.Type.IsMultiplayer()
-               && TogetherSettingsSync.EffectiveSymbiosisEnabled;
+               && TogetherInterop.SymbiosisEnabled;
     }
 
     /// <summary>这局大厅里的两个人是不是正好各自选了不同的 mod 角色。</summary>

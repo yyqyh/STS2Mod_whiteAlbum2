@@ -42,6 +42,20 @@
         <PackageReference Include="STS2.RitsuLib" Version="0.5.18" />
     </ItemGroup>
 
+    <!-- 版本号一致性：清单是游戏真正读的那份，Const.cs 里那份只用于日志/显示。
+         改一个忘了另一个时直接在这里报错（临时跳过：-p:SkipVersionCheck=1）。 -->
+    <Target Name="CheckVersionConsistency" BeforeTargets="CoreCompile" Condition="'$(SkipVersionCheck)' != '1'">
+        <PropertyGroup>
+            <_ManifestText>$([System.IO.File]::ReadAllText('$(MSBuildProjectDirectory)\$(MSBuildProjectName).json'))</_ManifestText>
+            <_ManifestVersion>$([System.Text.RegularExpressions.Regex]::Match($(_ManifestText), '"version"\s*:\s*"([^"]+)"').Groups[1].Value)</_ManifestVersion>
+            <_ConstText>$([System.IO.File]::ReadAllText('$(MSBuildProjectDirectory)\Const.cs'))</_ConstText>
+            <_ConstVersion>$([System.Text.RegularExpressions.Regex]::Match($(_ConstText), 'Version\s*=\s*"([^"]+)"').Groups[1].Value)</_ConstVersion>
+        </PropertyGroup>
+        <Error Condition="'$(_ManifestVersion)' != '$(_ConstVersion)'"
+               Text="版本号不一致：$(MSBuildProjectName).json 是 $(_ManifestVersion)，Const.cs 是 $(_ConstVersion)。两处要改成同一个（清单才是游戏读的那份）。" />
+        <Message Importance="high" Text="版本号一致：$(_ManifestVersion)" />
+    </Target>
+
     <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
         <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high" />
         <MakeDir Directories="$(ModOutputDir)" />

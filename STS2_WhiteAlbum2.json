@@ -13,6 +13,10 @@
     {
       "id": "STS2-RitsuLib",
       "min_version": "0.5.18"
+    },
+    {
+      "id": "together",
+      "min_version": "0.3.0"
     }
   ]
 }

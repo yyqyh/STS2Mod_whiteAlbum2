@@ -2,30 +2,16 @@ using STS2_WhiteAlbum2.Core.Character;
 
 namespace STS2_WhiteAlbum2.Core.Settings;
 
-/// <summary>本 mod 的全部持久化设置（together + pvp + 通用）。</summary>
-/// <remarks>加字段给个合理默认值即可，老配置缺字段时反序列化会取默认值，不用写迁移。</remarks>
+/// <summary>本 mod 自己的持久化设置（PVP + 通用）。</summary>
+/// <remarks>
+/// <para>
+/// together（共享）那部分设置归 together mod 自己管：它的设置页、它的存档、它的联机同步。
+/// 本 mod 只在需要时通过 <c>Core/Interop/TogetherInterop.cs</c> 读它的生效值。
+/// </para>
+/// <para>加字段给个合理默认值即可，老配置缺字段时反序列化会取默认值，不用写迁移。</para>
+/// </remarks>
 public sealed class WhiteAlbumSetting
 {
-    // ==================== together ====================
-
-    /// <summary>是否开启共生体。</summary>
-    public bool SymbiosisEnabled { get; set; } = true;
-
-    /// <summary>开局是否把回声（p2）的初始卡组复制进共享卡组。</summary>
-    public bool MergeStarterDecks { get; set; } = true;
-
-    /// <summary>共享血池上限提升：p2 最大生命的百分比（0~100）。只在新开一局生效一次。</summary>
-    public int HpBonusPercent { get; set; }
-
-    /// <summary>共生体人数上限（2~4）。</summary>
-    public int GroupSize { get; set; } = 2;
-
-    /// <summary>是否共享金币。</summary>
-    public bool ShareGold { get; set; } = true;
-
-    /// <summary>共生体存档登记：种子 → 成员 netId（逗号分隔）。</summary>
-    public Dictionary<string, string> SymbioticRuns { get; set; } = [];
-
     // ==================== pvp ====================
 
     /// <summary>是否开启决斗。</summary>

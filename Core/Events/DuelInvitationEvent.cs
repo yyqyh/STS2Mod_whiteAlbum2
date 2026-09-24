@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Models.Encounters;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2_WhiteAlbum2.Core.Combat.Duel;
-using STS2_WhiteAlbum2.Core.Combat.Together;
+using STS2_WhiteAlbum2.Core.Interop;
 using STS2_WhiteAlbum2.Core.Settings;
 
 namespace STS2_WhiteAlbum2.Core.Events;
@@ -79,7 +79,7 @@ public sealed class DuelInvitationEvent : ModEventTemplate
         }
 
         // 决斗是"两个人各自为战"：先把共生体关系解除，并把共享卡组按奇偶分给两边。
-        TogetherPair.UnbindForDuel("duel_invitation");
+        TogetherInterop.Unbind("duel_invitation");
 
         // 登记"下一场战斗是决斗"：这样只有这场受影响，其它战斗照旧。
         DuelState.ArmForNextCombat();

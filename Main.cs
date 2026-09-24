@@ -3,7 +3,9 @@ using System.Reflection;
 using HarmonyLib;
 
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Modding;
+using MegaCrit.Sts2.Core.Runs;
 using STS2RitsuLib;
 using STS2RitsuLib.Content;
 using STS2RitsuLib.Interop;
@@ -12,6 +14,8 @@ using STS2_WhiteAlbum2.Core.Character.Setsuna;
 using STS2_WhiteAlbum2.Core.Character.Touma;
 using STS2_WhiteAlbum2.Core.Potions;
 using STS2_WhiteAlbum2.Core.Relics;
+using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Interop;
 using STS2_WhiteAlbum2.Core.Settings;
 using STS2_WhiteAlbum2.Core.Content;
 
@@ -43,9 +47,11 @@ public static class Main
             Log.Error($"[{Const.ModId}] 设置初始化失败（不影响装补丁）：{ex.Message}");
         }
 
-        TogetherSettingsSync.Initialize();
         AlbumSettingsPage.Register();
-        SymbiosisMembers.Initialize();
+
+        // 共生体什么时候成组由本 mod 决定（共享本身的实现归 together mod）：
+        // 正好 2 人、且两人分别选了本 mod 的两个不同角色。
+        TogetherInterop.RegisterPairRule("STS2_WhiteAlbum2:two-distinct", SelectSymbiosisMembers);
 
         var applied = 0;
         var failed = 0;
@@ -70,13 +76,42 @@ public static class Main
         }
 
         Log.Info(
-            $"[{Const.ModId}] initialized v0.1.0; patch classes applied={applied} failed={failed}; "
+            $"[{Const.ModId}] initialized v{Const.Version}; patch classes applied={applied} failed={failed}; "
             + $"Harmony patched {harmony.GetPatchedMethods().Count()} method(s).");
 
         LogContentIds();
 
         // 并入的先古/boss 替换内容，id 也一起打出来。
         ReplacePlan.LogContentIds();
+    }
+
+    /// <summary>
+    /// 共生体的配对规则：正好 2 人，且两人分别选了本 mod 的两个不同角色。
+    /// </summary>
+    /// <remarks>
+    /// 只在 <c>Arm()</c>（新开一局 / 读档 / 重连）被问，必须只读、幂等。
+    /// 只看 <c>RunState.Players</c> 的顺序与角色 id —— 两端必须算出同一个名单，否则锚点会分叉。
+    /// 返回 <c>null</c> 表示"这局不该成组"，会回落到 together 自己的选人按钮名单。
+    /// </remarks>
+    private static IReadOnlyList<Player>? SelectSymbiosisMembers(IRunState runState)
+    {
+        var players = runState.Players;
+        if (players.Count != 2)
+        {
+            return null;
+        }
+
+        var first = players[0].Character;
+        var second = players[1].Character;
+
+        if (!AlbumCharacterRules.IsAlbumCharacter(first)
+            || !AlbumCharacterRules.IsAlbumCharacter(second)
+            || first.Id == second.Id)
+        {
+            return null;
+        }
+
+        return [.. players];
     }
 
     /// <summary>把本 mod 内容的真实 id 打进日志（本地化键对不上时看这几行最快）。</summary>

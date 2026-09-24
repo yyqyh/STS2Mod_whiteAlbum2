@@ -14,8 +14,14 @@ internal static class Const
     /// <summary>显示用名称。</summary>
     public const string Name = "STS2_WhiteAlbum2";
 
-    /// <summary>版本号，与清单 version 保持一致。</summary>
-    public const string Version = "0.1.0";
+    /// <summary>
+    /// 版本号：<b>必须与清单 <c>STS2_WhiteAlbum2.json</c> 的 <c>version</c> 一致</b>。
+    /// </summary>
+    /// <remarks>
+    /// 清单是游戏真正读的那份，这里的副本只用于日志（<c>Main.Initialize</c> 里那行 "initialized v…"）
+    /// 和别处要显示版本的地方 —— 启动日志和模组列表里的版本号对不上就是这两处漏改了一个。
+    /// </remarks>
+    public const string Version = "0.4.0";
 
     /// <summary>卡池用的能量颜色标识。</summary>
     public const string EnergyColorNameSetsuna = "SetsunaEnergyColor";

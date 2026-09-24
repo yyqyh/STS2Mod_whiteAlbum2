@@ -7,14 +7,14 @@ using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 
 using STS2_WhiteAlbum2.Core.Character;
+using STS2_WhiteAlbum2.Core.Interop;
 using STS2_WhiteAlbum2.Core.Settings;
-using STS2_WhiteAlbum2.Core.Utils;
 
 
 
 using System.Reflection;
 
-namespace STS2_WhiteAlbum2.Core.Patches.Together;
+namespace STS2_WhiteAlbum2.Core.Patches;
 
 /// <summary>
 /// 选人界面的 mod 角色可见性：单人隐藏，联机作为额外角色出现。
@@ -25,7 +25,8 @@ namespace STS2_WhiteAlbum2.Core.Patches.Together;
 /// 联机选人界面就是“原版角色 + 本 mod 两个角色”，玩家用本体原本的出发/确认进入游戏。
 /// </para>
 /// <para>
-/// 是否真的开始 together 由开局时的实际组合决定（见 <see cref="TogetherPair.Arm" />）：
+/// 是否真的开启共享由开局时的实际组合决定（规则见 <c>Main.SelectSymbiosisMembers</c>，注册给 together 的
+/// <c>RegisterPairRule</c>）：
 /// 只有正好 2 人、两个人都选了本 mod 角色、且两个角色不同，才会开启；
 /// 只选 1 个 mod 角色、人数不为 2、两人选同一个 mod 角色，都按普通联机局跑。
 /// </para>
@@ -103,9 +104,8 @@ internal static class CharacterSelectGateImpl
             button.Visible = multiplayer || singleplayerVisible || !isAlbum;
         }
 
-        CappedLog.Info(
-            "select.visibility",
-            $"选人可见性：联机={multiplayer} 单人可见开关={singleplayerVisible} "
+        Log.Info(
+            $"[{Const.ModId}] 选人可见性：联机={multiplayer} 单人可见开关={singleplayerVisible} "
             + $"大厅人数={lobby.Players.Count} mod角色按钮={albumCount}");
 
         RebuildFocusNeighbors(container);
@@ -134,8 +134,6 @@ internal static class CharacterSelectGateImpl
     }
 }
 
-/// <summary>打开选人界面时应用 mod 角色可见性。</summary>
-[HarmonyPatch(typeof(NCharacterSelectScreen), "OnSubmenuOpened")]
 /// <summary>选人界面：打开时应用 mod 角色可见性，关闭时回收缓存。</summary>
 [HarmonyPatch]
 internal static class CharacterSelectPatches
